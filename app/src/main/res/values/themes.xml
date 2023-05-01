@@ -16,5 +16,6 @@
 
         <!-- Title bar 삭제 -->
         <item name="windowNoTitle">true</item>
+
     </style>
 </resources>
