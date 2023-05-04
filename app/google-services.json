@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1003027264134",
+    "project_id": "tripgenie-4d834",
+    "storage_bucket": "tripgenie-4d834.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003027264134:android:fb775ac0e3a5aa45c3d707",
+        "android_client_info": {
+          "package_name": "com.kusitms.ovengers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003027264134-gs0cf4qk6j2n4m2hsa9p7pds02g43ov8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS4IplJfUGFU7O1Tq9g20dlj99liQRqhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003027264134-gs0cf4qk6j2n4m2hsa9p7pds02g43ov8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
