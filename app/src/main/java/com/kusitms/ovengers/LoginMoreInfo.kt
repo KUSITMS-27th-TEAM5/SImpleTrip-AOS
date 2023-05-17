@@ -20,6 +20,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.databinding.ActivityLoginMoreInfoBinding
 
 
@@ -32,6 +33,8 @@ class LoginMoreInfo : AppCompatActivity(){
     //클릭시 1로 변환시키고 넘겨줌
 
     var gender = ""
+    var birth = ""
+    var pictureUrl=""
 
     val binding by lazy { ActivityLoginMoreInfoBinding.inflate(layoutInflater) }
 
@@ -79,6 +82,22 @@ class LoginMoreInfo : AppCompatActivity(){
                 binding.monthText.text = "${m}"
                 binding.dayText.text = "${d}"
             }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+       birth="${binding.yearText.text}-${binding.monthText.text}-${binding.dayText.text}"
+        }
+
+        binding.SignInBtn.setOnClickListener {
+            val data =
+                RequestSignUp(
+                    binding.editTextName.text.toString(),
+                    binding.editTextNickname.text.toString(),
+                    binding.editTextEmail.text.toString(),
+                    gender,
+                    birth,
+                    "uri"
+
+
+                )
+
         }
     }
 
@@ -128,12 +147,14 @@ class LoginMoreInfo : AppCompatActivity(){
                 REQ_GALLERY -> {
                     data?.data?.let {uri ->
                         binding.ImgUser.setImageURI(uri)
+
                     }
                 }
             }
         }
 
     }
+
 
 
 
