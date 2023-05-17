@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".view.HomeFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,19 +59,4 @@
         android:layout_height="match_parent"/>
 
 </LinearLayout>
-=======
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.HomeFragment"
-    android:background="@color/main_blue">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
-
-</FrameLayout>
->>>>>>> 377faf1ab6f1cd299f49a00430ed2aaf9de8a4aa

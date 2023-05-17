@@ -21,7 +21,9 @@
         tools:targetApi="31">
         <activity
             android:name=".HomeActivity"
-            android:exported="true" />
+            android:exported="true" >
+
+        </activity>
 
         <activity
             android:name=".SplashActivity"
@@ -30,20 +32,21 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity
             android:name=".MainActivity"
-<<<<<<< HEAD
             android:exported="true">
+
         </activity>
-=======
-            android:exported="true"/>
->>>>>>> 377faf1ab6f1cd299f49a00430ed2aaf9de8a4aa
 
         <activity
             android:name=".LoginMoreInfo"
-            android:exported="true"/>
+            android:exported="true">
+
+
+        </activity>
     </application>
 
 </manifest>

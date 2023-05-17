@@ -8,23 +8,30 @@ import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.ContextMenu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-<<<<<<< HEAD
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.kusitms.ovengers.data.RequestSignUp
-=======
->>>>>>> 377faf1ab6f1cd299f49a00430ed2aaf9de8a4aa
+import com.kusitms.ovengers.data.ResponseGoogleSignup
+import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.databinding.ActivityLoginMoreInfoBinding
+import com.kusitms.ovengers.retrofit.APIS
+import com.kusitms.ovengers.retrofit.RetrofitInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginMoreInfo : AppCompatActivity(){
 
     val REQ_GALLERY = 1
+
+    private lateinit var retAPIS: APIS
 
 
     //남녀 성별 초기값 0
@@ -32,15 +39,24 @@ class LoginMoreInfo : AppCompatActivity(){
 
     var gender = ""
     var birth = ""
-    var pictureUrl=""
+    var pictureUrl= ""
+
+    var accessToken = intent.getStringExtra("accessToken")
+    var name = intent.getStringExtra("userName")
+    var email = intent.getStringExtra("email")
 
     val binding by lazy { ActivityLoginMoreInfoBinding.inflate(layoutInflater) }
-/*
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        binding.editTextName.setText(name)
+        binding.editTextEmail.setText(email)
 
 
         binding.ImgUserBtn.setOnClickListener {
@@ -86,16 +102,36 @@ class LoginMoreInfo : AppCompatActivity(){
         binding.SignInBtn.setOnClickListener {
             val data =
                 RequestSignUp(
-                    binding.editTextName.text.toString(),
-                    binding.editTextNickname.text.toString(),
-                    binding.editTextEmail.text.toString(),
+
+                   name.toString(),
+                   binding.editTextNickname.text.toString(),
+                   email.toString(),
                     gender,
                     birth,
                     "uri"
 
-
                 )
 
+            val bearerToken = "Bearer $accessToken"
+            retAPIS.signUp(bearerToken!!,data).enqueue(object : Callback<ResponseSignUp> {
+                @SuppressLint("SuspiciousIndentation")
+                override fun onResponse(call: Call<ResponseSignUp>, response: Response<ResponseSignUp>) {
+                    if (response.isSuccessful) {
+
+
+                        val accessToken : String = response.body()?.attribute?.accessToken.toString()
+
+                        val refreshToken : String = response.body()?.attribute?.refreshToken.toString()
+
+                            Log.d("signUp response ","회원가입 성공")
+                        Toast.makeText(baseContext,"회원가입 성공",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d("signUp Response : ", "Fail 1")
+                    }
+                } override fun onFailure(call: Call<ResponseSignUp>, t: Throwable) {
+                    Log.d("signUp Response : ", "Fail 2")
+                }
+            })
         }
     }
 
@@ -107,7 +143,7 @@ class LoginMoreInfo : AppCompatActivity(){
         super.onCreateContextMenu(menu, v, menuInfo)
 
         val inflater : MenuInflater = menuInflater
-        inflater.inflate(R.menu.`bottom_navigation.xml`, menu)
+        inflater.inflate(R.menu.user_img_menu, menu)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -152,7 +188,7 @@ class LoginMoreInfo : AppCompatActivity(){
         }
 
     }
-*/
+
 
 
 
