@@ -1,16 +1,18 @@
 package com.kusitms.ovengers
 
-import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
+import android.R.attr.data
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.databinding.ActivityMainBinding
 import com.kusitms.ovengers.retrofit.APIS
@@ -19,94 +21,117 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class MainActivity : AppCompatActivity() {
+    companion object {
+        private const val TAG = "MainActivity"
+        private var GOOGLE_LOGIN_CODE = 9001
+    }
 
+    private var auth : FirebaseAuth? = null
+    private var googleSignInClient : GoogleSignInClient? = null
     lateinit var binding: ActivityMainBinding
-    var mGoogleSignInClient : GoogleSignInClient? = null
-    lateinit var retService: APIS
+    private lateinit var retAPIS: APIS
 
-    var id : String = ""
-    var familyName : String = ""
-    var givenName : String = ""
-    var email : String = ""
-    var token : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
-        retService = RetrofitInstance.retrofitInstance().create(APIS::class.java)
-
         setContentView(binding.root)
 
-        //1003027264134-gs0cf4qk6j2n4m2hsa9p7pds02g43ov8.apps.googleusercontent.com
-        val id = "AIzaSyDS4IplJfUGFU7O1Tq9g20dlj99liQRqhw"
-        // 구글 로그인 인스턴스 생성
+        // 레트로핏
+        retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
+        // 파이어베이스 인스턴스 생성
+        auth = FirebaseAuth.getInstance()
+
+        // 구글 로그인 버튼
+        binding.btnLogin.setOnClickListener {
+            googleLogin()
+        }
+
+        // Config SignIn
+        val serverClientId = "69907779161-35tiu2ekpd8sqm02pa7ueh4g4pb3eggr.apps.googleusercontent.com"
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            //.requestIdToken(id)
+            .requestIdToken(serverClientId)
             .requestEmail()
             .build()
-
-        // 구글 로그인 런처
-        var googleLoginLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == -1) {
-                val data = result.data
-                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                getGoogleInfo(task)
-            }
-        }
-
-        //gso 클라이언트 생성
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        // 구글 로그인 버튼 누를 시 로그인 진행
-        binding.btnLogin.setOnClickListener {
-            val signInIntent = mGoogleSignInClient!!.signInIntent
-            googleLoginLauncher.launch(signInIntent)
-        }
-
+        googleSignInClient = GoogleSignIn.getClient(this,gso)
     }
 
-    // 구글 로그인 실행
-//    fun googleLogin() {
-//        val signInIntent = mGoogleSignInClient!!.signInIntent
-//        googleLoginLauncher.launch(signInIntent)
-//    }
-
-    // 구글 로그인 결과 수신
-    fun getGoogleInfo(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val TAG = "구글 로그인 결과"
-            val account = completedTask.getResult(ApiException::class.java)
-            Log.d(TAG, account.id!!)
-            Log.d(TAG, account.familyName!!)
-            Log.d(TAG, account.givenName!!)
-            Log.d(TAG, account.displayName!!)
-            Log.d(TAG, account.email!!)
-            Log.d(TAG, account.photoUrl.toString()!!)
-            // Log.d(TAG, account.idToken!!)
-
-        }
-        catch (e: ApiException) {
-            Log.w(TAG, "signInResult:failed code=" + e.statusCode)
-        }
+    // 구글 로그인 함수
+    fun googleLogin(){
+        var signInIntent = googleSignInClient?.signInIntent
+        startActivityForResult(signInIntent!!,GOOGLE_LOGIN_CODE)
     }
 
-    private fun oauthGoogle(token: String){
-        val TAG = "OauthGoogle 결과"
-        retService.oauthGoogle(token).enqueue(object :
-            Callback<ResponseGoogleSignup> {
-            override fun onResponse(call: Call<ResponseGoogleSignup>, response: Response<ResponseGoogleSignup>) {
-                if (response.isSuccessful) {
-                    val email = response.body()?.attribute?.email
-                } else {
-                    Log.d(TAG, "실패했어요 :<")
+
+    // Firebase로 AuthGoogle 로그인 하기, 사용 X
+    fun firebaseAuthWithGoogle(account : GoogleSignInAccount?){
+        var credential = GoogleAuthProvider.getCredential(account?.idToken,null)
+        Log.d(TAG, "Firebase idToken : $credential")
+        auth?.signInWithCredential(credential)
+            ?.addOnCompleteListener{
+                    task ->
+                if(task.isSuccessful){ }
+                else{
+                    Toast.makeText(this,task.exception?.message,Toast.LENGTH_SHORT).show()
                 }
             }
-            override fun onFailure(call: Call<ResponseGoogleSignup>, t: Throwable) {
-                Log.d(t.toString(), "error: ${t.toString()}")
+    }
+
+    // 구글 idToken 받아 오기
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == GOOGLE_LOGIN_CODE){
+            var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data!!)!!
+            if(result.isSuccess) {
+                var accout = result.signInAccount
+                var idToken : String? = accout?.idToken
+                Log.d(TAG, "Google idToken : $idToken")
+
+                // oauthGoogle 호출
+                oauthGoogle(idToken.toString())
+                // firebaseAuthWithGoogle(accout)
+                Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(this,"로그인 실패",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    // idToken 값 서버 전송
+    private fun oauthGoogle(idToken: String) {
+        // Bearer 추가
+        val bearerToken = "Bearer $idToken"
+        retAPIS.oauthGoogle(bearerToken).enqueue(object : Callback<ResponseGoogleSignup> {
+            override fun onResponse(call: Call<ResponseGoogleSignup>, response: Response<ResponseGoogleSignup>) {
+                if (response.isSuccessful) {
+                    val accessToken : String = response.body()?.attribute?.accessToken.toString()
+                    val email : String = response.body()?.attribute?.email.toString()
+                    val userName : String = response.body()?.attribute?.userName.toString()
+
+                    Log.d("oauthGoogle Response Message : ", response.message())
+                    Log.d("AccessToken Response : ", accessToken)
+
+                    // 페이지 이동
+                    move(accessToken, email, userName)
+                } else {
+                    Log.d("Oauth Login Response : ", "Fail 1")
+                }
+            } override fun onFailure(call: Call<ResponseGoogleSignup>, t: Throwable) {
+                Log.d("Oauth Login Response : ", "Fail 2")
             }
         })
     }
-}
 
+    private fun move(accessToken : String, email : String, userName : String){
+        val intent = Intent(this, LoginMoreInfo::class.java)
+        intent.putExtra("accessToken", accessToken)
+        intent.putExtra("email", email)
+        intent.putExtra("userName", userName)
+        finish()
+        startActivity(intent)
+    }
+}
