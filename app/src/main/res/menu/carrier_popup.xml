@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/popup_country"
+        android:title="여행지 편집"
+        />
+    <item
+        android:id="@+id/popup_date"
+        android:title="여행 기간 편집"
+        />
+    <item
+        android:id="@+id/popup_carrier_name"
+        android:title="캐리어 이름 편집"
+        />
+    <item
+        android:id="@+id/popup_delete_carrier"
+        android:title="캐리어 삭제"
+        />
+</menu>
