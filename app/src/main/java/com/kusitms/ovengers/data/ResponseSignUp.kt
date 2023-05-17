@@ -7,5 +7,4 @@ data class ResponseSignUp (
     val name: String,
     val nickname: String,
     val pictureUrl: String
-
 )
