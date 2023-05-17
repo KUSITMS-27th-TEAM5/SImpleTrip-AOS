@@ -3,8 +3,6 @@ package com.kusitms.ovengers
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +12,7 @@ import android.view.ContextMenu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.kusitms.ovengers.databinding.ActivityLoginMoreInfoBinding
 
 
@@ -34,7 +27,7 @@ class LoginMoreInfo : AppCompatActivity(){
     var gender = ""
 
     val binding by lazy { ActivityLoginMoreInfoBinding.inflate(layoutInflater) }
-
+/*
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,7 +83,7 @@ class LoginMoreInfo : AppCompatActivity(){
         super.onCreateContextMenu(menu, v, menuInfo)
 
         val inflater : MenuInflater = menuInflater
-        inflater.inflate(R.menu.user_img_menu, menu)
+        inflater.inflate(R.menu.`bottom_navigation.xml`, menu)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -134,7 +127,7 @@ class LoginMoreInfo : AppCompatActivity(){
         }
 
     }
-
+*/
 
 
 } // 커밋용

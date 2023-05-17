@@ -1,10 +1,11 @@
 package com.kusitms.ovengers
 
-import androidx.appcompat.app.AppCompatActivity
+import android.R.attr.data
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -19,6 +20,7 @@ import com.kusitms.ovengers.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         // 레트로핏
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
+
         // 파이어베이스 인스턴스 생성
         auth = FirebaseAuth.getInstance()
 
@@ -62,34 +65,34 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(signInIntent!!,GOOGLE_LOGIN_CODE)
     }
 
-    // Firebase로 AuthGoogle 로그인 하기
+
+    // Firebase로 AuthGoogle 로그인 하기, 사용 X
     fun firebaseAuthWithGoogle(account : GoogleSignInAccount?){
         var credential = GoogleAuthProvider.getCredential(account?.idToken,null)
-        Log.d(TAG, "구글 idToken : $credential")
-
-        // 레트로핏 동작 함수에 idToken 값 넘기기
-        // oauthGoogle(credential.toString())
-
+        Log.d(TAG, "Firebase idToken : $credential")
         auth?.signInWithCredential(credential)
             ?.addOnCompleteListener{
                     task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this,"idToken 받아오기 성공!",Toast.LENGTH_SHORT).show()
-                }else{
-                    // 틀렸을 때
+                if(task.isSuccessful){ }
+                else{
                     Toast.makeText(this,task.exception?.message,Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    // 구글 API 응답값 받아오기
+    // 구글 idToken 받아 오기
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == GOOGLE_LOGIN_CODE){
             var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data!!)!!
             if(result.isSuccess) {
                 var accout = result.signInAccount
-                firebaseAuthWithGoogle(accout)
+                var idToken : String? = accout?.idToken
+                Log.d(TAG, "Google idToken : $idToken")
+
+                // oauthGoogle 호출
+                oauthGoogle(idToken.toString())
+                // firebaseAuthWithGoogle(accout)
                 Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
             }
             else{
@@ -105,28 +108,29 @@ class MainActivity : AppCompatActivity() {
         retAPIS.oauthGoogle(bearerToken).enqueue(object : Callback<ResponseGoogleSignup> {
             override fun onResponse(call: Call<ResponseGoogleSignup>, response: Response<ResponseGoogleSignup>) {
                 if (response.isSuccessful) {
-                    val responseCode = response.body()?.code
-                    val responseMessage = response.body()?.message
-                    Log.d("Oauth Login Response : ", responseCode.toString() + responseMessage.toString())
+                    val accessToken : String = response.body()?.attribute?.accessToken.toString()
+                    val email : String = response.body()?.attribute?.email.toString()
+                    val userName : String = response.body()?.attribute?.userName.toString()
 
-                    val accessToken = response.body()?.attribute?.accessToken
-                    val refreshToken = response.body()?.attribute?.refreshToken
-                    Log.d("AccessToken Response : ", accessToken.toString())
+                    Log.d("oauthGoogle Response Message : ", response.message())
+                    Log.d("AccessToken Response : ", accessToken)
 
                     // 페이지 이동
-                    move(accessToken.toString())
+                    move(accessToken, email, userName)
                 } else {
-
+                    Log.d("Oauth Login Response : ", "Fail 1")
                 }
             } override fun onFailure(call: Call<ResponseGoogleSignup>, t: Throwable) {
-                Log.d("Oauth Login Response : ", "Fail")
+                Log.d("Oauth Login Response : ", "Fail 2")
             }
         })
     }
 
-    private fun move(accessToken : String){
+    private fun move(accessToken : String, email : String, userName : String){
         val intent = Intent(this, LoginMoreInfo::class.java)
         intent.putExtra("accessToken", accessToken)
+        intent.putExtra("email", email)
+        intent.putExtra("userName", userName)
         finish()
         startActivity(intent)
     }
