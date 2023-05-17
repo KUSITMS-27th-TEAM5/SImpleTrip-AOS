@@ -11,8 +11,8 @@ class FragTestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_frag_test)
 
         val transaction = manager.beginTransaction()
-        val HomeFragment = HomeFragment()
-        transaction.replace(R.id.frameArea, HomeFragment)
+        val HomeFragment2 = HomeFragment2()
+        transaction.replace(R.id.frameArea, HomeFragment2)
         transaction.addToBackStack(null)
         transaction.commit()
     }

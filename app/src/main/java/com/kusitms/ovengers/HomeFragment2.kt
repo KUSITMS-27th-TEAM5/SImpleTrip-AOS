@@ -12,7 +12,7 @@ import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.databinding.FragmentHomeBinding
 
 
-class HomeFragment : Fragment() {
+class HomeFragment2 : Fragment() {
 
 
     private lateinit var carrierAdapter: CarrierAdapter

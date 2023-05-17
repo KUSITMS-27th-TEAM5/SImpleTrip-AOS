@@ -2,17 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- 인터넷 사용 권한 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 카메라 사용 권한 -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 사용 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera2"/>
-
+    <uses-feature android:name="android.hardware.camera2" />
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -20,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Meetup"
         tools:targetApi="31">
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
 
         <activity
             android:name=".SplashActivity"
@@ -32,13 +34,16 @@
 
         <activity
             android:name=".MainActivity"
+<<<<<<< HEAD
             android:exported="true">
         </activity>
+=======
+            android:exported="true"/>
+>>>>>>> 377faf1ab6f1cd299f49a00430ed2aaf9de8a4aa
 
         <activity
             android:name=".LoginMoreInfo"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"/>
     </application>
+
 </manifest>
