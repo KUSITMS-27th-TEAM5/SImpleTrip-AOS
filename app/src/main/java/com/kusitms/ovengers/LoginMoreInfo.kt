@@ -32,6 +32,9 @@ class LoginMoreInfo : AppCompatActivity(){
     val REQ_GALLERY = 1
 
     private lateinit var retAPIS: APIS
+    // API 호출 -> 만료됐음 ! -1004
+    // 갱신 API 호출 -> new token 갱신
+    // 내가 원래 호출하려던 API
 
 
     //남녀 성별 초기값 0
@@ -41,7 +44,10 @@ class LoginMoreInfo : AppCompatActivity(){
     var birth = ""
     var pictureUrl= ""
 
-    var accessToken = intent.getStringExtra("accessToken")
+    // SharedPreferences 조희
+    val accessToken = MyApplication.prefs.getString("accessToken", "token")
+
+    // intent 조희
     var name = intent.getStringExtra("userName")
     var email = intent.getStringExtra("email")
 
@@ -55,8 +61,8 @@ class LoginMoreInfo : AppCompatActivity(){
 
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
-        binding.editTextName.setText(name)
-        binding.editTextEmail.setText(email)
+        //binding.editTextName.setText(name)
+        //binding.editTextEmail.setText(email)
 
 
         binding.ImgUserBtn.setOnClickListener {
@@ -96,16 +102,17 @@ class LoginMoreInfo : AppCompatActivity(){
                 binding.monthText.text = "${m}"
                 binding.dayText.text = "${d}"
             }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
-       birth="${binding.yearText.text}-${binding.monthText.text}-${binding.dayText.text}"
+       //birth="${binding.yearText.text}-${binding.monthText.text}-${binding.dayText.text}"
+            birth="2000-02-18"
         }
 
         binding.SignInBtn.setOnClickListener {
             val data =
                 RequestSignUp(
 
-                   name.toString(),
+                   binding.editTextName.text.toString(),
                    binding.editTextNickname.text.toString(),
-                   email.toString(),
+                   binding.editTextEmail.text.toString(),
                     gender,
                     birth,
                     "uri"
@@ -132,6 +139,7 @@ class LoginMoreInfo : AppCompatActivity(){
                     Log.d("signUp Response : ", "Fail 2")
                 }
             })
+
         }
     }
 
