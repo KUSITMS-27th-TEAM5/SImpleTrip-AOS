@@ -46,10 +46,12 @@ class LoginMoreInfo : AppCompatActivity(){
 
     // SharedPreferences 조희
     val accessToken = MyApplication.prefs.getString("accessToken", "token")
+    val userName = MyApplication.prefs.getString("userName","String")
+    val email = MyApplication.prefs.getString("email","String")
 
     // intent 조희
-    //var name = intent.getStringExtra("userName")
-    //var email = intent.getStringExtra("email")
+//    var name = intent.getStringExtra("userName")
+//    var email = intent.getStringExtra("email")
 
     val binding by lazy { ActivityLoginMoreInfoBinding.inflate(layoutInflater) }
 
@@ -61,8 +63,8 @@ class LoginMoreInfo : AppCompatActivity(){
 
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
-        //binding.editTextName.setText(name)
-        //binding.editTextEmail.setText(email)
+        binding.editTextName.setText(userName)
+        binding.editTextEmail.setText(email)
 
 
         binding.ImgUserBtn.setOnClickListener {
@@ -127,11 +129,20 @@ class LoginMoreInfo : AppCompatActivity(){
 
 
                         val accessToken : String = response.body()?.attribute?.accessToken.toString()
-
                         val refreshToken : String = response.body()?.attribute?.refreshToken.toString()
 
+
+                        //새로운 토큰 저장
+                        MyApplication.prefs.setString("accessToken",accessToken)
+                        MyApplication.prefs.setString("refreshToken",refreshToken)
+
+
+                        Log.d("AccessToken Response : ", accessToken)
+                        Log.d("AccessToken refreshToken : ", refreshToken)
                             Log.d("signUp response ","회원가입 성공")
                         Toast.makeText(baseContext,"회원가입 성공",Toast.LENGTH_SHORT).show()
+
+                        moveToHome()
                     } else {
                         Log.d("signUp Response : ", "Fail 1")
                     }
@@ -195,6 +206,12 @@ class LoginMoreInfo : AppCompatActivity(){
             }
         }
 
+    }
+
+    private fun moveToHome () {
+        val intent = Intent(this, HomeActivity::class.java)
+        finish()
+        startActivity(intent)
     }
 
 
