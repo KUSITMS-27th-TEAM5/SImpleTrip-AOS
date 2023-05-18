@@ -48,8 +48,8 @@ class LoginMoreInfo : AppCompatActivity(){
     val accessToken = MyApplication.prefs.getString("accessToken", "token")
 
     // intent 조희
-    var name = intent.getStringExtra("userName")
-    var email = intent.getStringExtra("email")
+    //var name = intent.getStringExtra("userName")
+    //var email = intent.getStringExtra("email")
 
     val binding by lazy { ActivityLoginMoreInfoBinding.inflate(layoutInflater) }
 
