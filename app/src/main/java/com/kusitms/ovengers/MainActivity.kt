@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.kusitms.ovengers.data.ResponseGoogleSignup
+import com.kusitms.ovengers.data.TestResponse
 import com.kusitms.ovengers.databinding.ActivityMainBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
@@ -109,13 +110,14 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseGoogleSignup>, response: Response<ResponseGoogleSignup>) {
                 if (response.isSuccessful) {
                     val accessToken : String = response.body()?.attribute?.accessToken.toString()
+                    val refreshToken : String = response.body()?.attribute?.refreshToken.toString()
                     val email : String = response.body()?.attribute?.email.toString()
                     val userName : String = response.body()?.attribute?.userName.toString()
 
                     Log.d("oauthGoogle Response Message : ", response.message())
                     Log.d("AccessToken Response : ", accessToken)
+                    Log.d("AccessToken refreshToken : ", refreshToken)
 
-                    // 페이지 이동
                     move(accessToken, email, userName)
                 } else {
                     Log.d("Oauth Login Response : ", "Fail 1")
@@ -127,10 +129,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun move(accessToken : String, email : String, userName : String){
+        // sharedPreference에 accessToken 저장
+        MyApplication.prefs.setString("accessToken", accessToken)
+
+        // 엑티비티 전환, intent -> email, userName
         val intent = Intent(this, LoginMoreInfo::class.java)
-        intent.putExtra("accessToken", accessToken)
         intent.putExtra("email", email)
         intent.putExtra("userName", userName)
+
         finish()
         startActivity(intent)
     }

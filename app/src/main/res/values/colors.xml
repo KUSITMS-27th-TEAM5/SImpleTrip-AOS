@@ -9,5 +9,9 @@
     <color name="main_blue">#27DCFF</color>
     <color name="main_purple">#855EFF</color>
     <color name="main_white">#FFFFFF</color>
+
     <color name="gray_100">#CCCACA</color>
+    <color name="gray_500">#444444</color>
+
+    <color name="purple_100">#D8CCFF</color>
 </resources>
