@@ -9,6 +9,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kusitms.ovengers.CarrierAdapter
+import com.kusitms.ovengers.MyApplication
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.databinding.FragmentHomeBinding
@@ -41,6 +42,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val name = MyApplication.prefs.getString("userName","String")
+
+        binding.carrierWho.setText("${name} 님의 티켓 캐리어king")
 
         dataSet.add(RequestMakeCarrier("a","d","A","일본 여행"))
 

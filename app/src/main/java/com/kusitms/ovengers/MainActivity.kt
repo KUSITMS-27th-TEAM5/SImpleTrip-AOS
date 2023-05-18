@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         // Config SignIn
         val serverClientId = "69907779161-35tiu2ekpd8sqm02pa7ueh4g4pb3eggr.apps.googleusercontent.com"
+
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(serverClientId)
             .requestEmail()
@@ -129,13 +130,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun move(accessToken : String, email : String, userName : String){
-        // sharedPreference에 accessToken 저장
+        // sharedPreference에 accessToken,email,userName 저장
         MyApplication.prefs.setString("accessToken", accessToken)
+        MyApplication.prefs.setString("email",email)
+        MyApplication.prefs.setString("userName",userName)
 
         // 엑티비티 전환, intent -> email, userName
         val intent = Intent(this, LoginMoreInfo::class.java)
-        intent.putExtra("email", email)
-        intent.putExtra("userName", userName)
+//        intent.putExtra("email", email)
+//        intent.putExtra("userName", userName)
 
         finish()
         startActivity(intent)
