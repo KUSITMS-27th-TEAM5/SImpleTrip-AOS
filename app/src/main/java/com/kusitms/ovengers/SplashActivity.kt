@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
             val intent= Intent( this,MainActivity::class.java)
             startActivity(intent)
             finish()
-            // 2초
-        }, 2000)
+            // 5.2초
+        }, 5200)
     }
 } // 커밋용

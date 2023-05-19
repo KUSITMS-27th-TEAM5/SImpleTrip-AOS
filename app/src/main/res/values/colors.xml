@@ -11,7 +11,11 @@
     <color name="main_white">#FFFFFF</color>
 
     <color name="gray_100">#CCCACA</color>
+    <color name="gray_200">#7D7D7D</color>
     <color name="gray_500">#444444</color>
+    <color name="gray_300">#F9F9F9</color>
+    <color name="gray_400">#F5F5F5</color>
+    <color name="gray_600">#999999</color>
 
     <color name="purple_100">#D8CCFF</color>
 </resources>
