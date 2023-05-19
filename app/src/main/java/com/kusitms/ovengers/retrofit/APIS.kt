@@ -1,6 +1,7 @@
 package com.kusitms.ovengers.retrofit
 
 import com.kusitms.ovengers.data.RequestSignUp
+import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.data.ResponseSignUp
 import retrofit2.Call
@@ -12,17 +13,30 @@ import retrofit2.http.Path
 
 interface APIS {
 
-    // 구글 로그인
+    // 회원가입 | 구글 로그인 | 유정
     @GET("/v1/user/oauth/google")
     fun oauthGoogle(
         @Header("Authorization") Authorization: String
     ) : Call<ResponseGoogleSignup>
 
-    //회원가입
+    // 회원가입 | 추가 정보 수집 | 승균
     @POST("/v1/user/signUp")
     fun signUp(
         @Header("Authorization") Authorization: String,
         @Body signUp: RequestSignUp
     ) : Call<ResponseSignUp>
+
+    // 스토어 | 포인트 조회 | 유정
+    @GET("/v1/myStore/selectPoint")
+    fun getPoint(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseGetPoint>
+
+    // 스토어 | 포인트 차감 | 유정
+    @GET("/v1/myStore/updatePoint")
+    fun setPoint(
+        @Header("Authorization") Authorization: String,
+        @Path("point") point: Int
+    ) : Call<ResponseGetPoint>
 
 }
