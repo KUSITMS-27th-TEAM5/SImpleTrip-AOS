@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="해외여행, 미리 준비하고 즐기는 편리함"
+        android:text="여행을 편리하게 그리고 의미있게"
         android:fontFamily="@font/pretendard_bold"
         android:textColor="@color/main_purple"
         android:textSize="17dp"

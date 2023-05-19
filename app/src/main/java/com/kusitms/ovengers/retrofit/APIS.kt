@@ -3,6 +3,8 @@ package com.kusitms.ovengers.retrofit
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
+import com.kusitms.ovengers.data.ResponseNewToken
+import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import retrofit2.Call
 import retrofit2.http.Body
@@ -37,6 +39,12 @@ interface APIS {
     fun setPoint(
         @Header("Authorization") Authorization: String,
         @Path("point") point: Int
-    ) : Call<ResponseGetPoint>
+    ) : Call<ResponseSetPoint>
+
+    // accessToken 재발급 | 유정
+    @GET("/v1/user/reissue")
+    fun newToken(
+        @Header("Authorization") Authorization: String,
+    ) : Call<ResponseNewToken>
 
 }
