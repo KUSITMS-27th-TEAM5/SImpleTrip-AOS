@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_height="match_parent"
         android:layout_marginBottom="100dp">
 
         <!-- 메뉴바 -->
@@ -242,12 +242,14 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="70dp"
+            android:layout_marginBottom="47dp"
             android:background="@drawable/bg_main_purple"
             android:fontFamily="@font/pretendard_bold"
             android:gravity="center"
             android:text="결제하기"
             android:textColor="@color/main_white"
             android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
