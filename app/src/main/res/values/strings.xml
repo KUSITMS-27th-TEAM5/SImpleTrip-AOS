@@ -2,4 +2,6 @@
     <string name="app_name">트립지니</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="underline_korea"><u>국내</u></string>
+    <string name="underline_world"><u>해외</u></string>
 </resources>

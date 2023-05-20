@@ -17,4 +17,7 @@
         android:id="@+id/popup_delete_carrier"
         android:title="캐리어 삭제"
         />
+    <item
+        android:id="@+id/popup_cancle"
+        android:title="취소"/>
 </menu>

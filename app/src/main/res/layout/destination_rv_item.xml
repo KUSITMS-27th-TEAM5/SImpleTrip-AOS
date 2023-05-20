@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp">
+
+    <ImageView
+        android:id="@+id/img_destination"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="24dp"
+        android:src="@drawable/seoul"/>
+    
+    <TextView
+        android:id="@+id/destination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서울"
+        android:textSize="15sp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="21dp"/>
+    <TextView
+        android:id="@+id/btn_select"
+        android:layout_width="46dp"
+        android:layout_height="26dp"
+        android:text="선택"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:backgroundTint="#E7E7E7"
+        android:textColor="#818181"
+        android:layout_marginLeft="200dp"
+        />
+
+
+
+</LinearLayout>
