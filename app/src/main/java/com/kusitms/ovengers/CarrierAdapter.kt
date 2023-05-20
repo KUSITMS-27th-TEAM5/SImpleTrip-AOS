@@ -1,25 +1,34 @@
 package com.kusitms.ovengers
 
+import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.data.RequestMakeCarrier
+import java.time.LocalDate
 
 class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : RecyclerView.Adapter<CarrierAdapter.ViewHolder>() {
 
 
-    class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val carrierName : TextView
-
-        init {
-            carrierName = view.findViewById(R.id.textview_carrier_name)
-
-        }
-
-
-    }
+//   inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+//        val carrierName : TextView
+//
+//
+//        init {
+//            view.setOnClickListener{
+//                itemClickListner?.onItemClick(adapterPosition)
+//            }
+//            carrierName = view.findViewById(R.id.textview_carrier_name)
+//
+//
+//        }
+//
+//
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrierAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.carrier_rv_item,parent,false)
@@ -38,6 +47,12 @@ class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : Recy
     }
     var itemLongClick : ItemLongClick?=null
 
+    //item click
+
+
+
+
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.carrierName.text = dataSet[position].carrierName
 
@@ -55,9 +70,24 @@ class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : Recy
         }
 
 
+
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+        val carrierName : TextView
+
+
+        init {
+
+
+            carrierName = view.findViewById(R.id.textview_carrier_name)
+
+
+        }
+
+
     }
 }

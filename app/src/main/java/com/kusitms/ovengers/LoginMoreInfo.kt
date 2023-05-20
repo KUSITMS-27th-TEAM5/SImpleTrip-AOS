@@ -48,6 +48,7 @@ class LoginMoreInfo : AppCompatActivity(){
     val accessToken = MyApplication.prefs.getString("accessToken", "token")
     val userName = MyApplication.prefs.getString("userName","String")
     val email = MyApplication.prefs.getString("email","String")
+    var nickName = ""
 
     // intent 조희
 //    var name = intent.getStringExtra("userName")
@@ -104,7 +105,7 @@ class LoginMoreInfo : AppCompatActivity(){
                 binding.monthText.text = "${m}"
                 binding.dayText.text = "${d}"
             }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
-       //birth="${binding.yearText.text}-${binding.monthText.text}-${binding.dayText.text}"
+//       birth="${binding.yearText.text}-${binding.monthText.text}-${binding.dayText.text}"
             birth="2000-02-18"
         }
 
@@ -209,9 +210,16 @@ class LoginMoreInfo : AppCompatActivity(){
     }
 
     private fun moveToHome () {
-        val intent = Intent(this, HomeActivity::class.java)
-        finish()
-        startActivity(intent)
+        nickName = binding.editTextNickname.text.toString()
+        if (nickName=="") {
+            Toast.makeText(baseContext,"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
+        } else {
+            MyApplication.prefs.setString("nickName",nickName)
+            val intent = Intent(this, SignUpSuccessActivity::class.java)
+            finish()
+            startActivity(intent)
+        }
+
     }
 
 
