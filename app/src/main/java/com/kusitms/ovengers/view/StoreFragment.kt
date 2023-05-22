@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kusitms.ovengers.MyApplication
+import com.kusitms.ovengers.Mypage
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.databinding.FragmentStoreBinding
 import com.kusitms.ovengers.retrofit.APIS
@@ -33,6 +34,17 @@ class StoreFragment : Fragment() {
 
         // 유저 네임 설정
         binding.username.text = username
+
+        // Mypage 이동
+        binding.btnMypage.setOnClickListener {
+            val myPage = Mypage()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, myPage)
+                addToBackStack(null)
+                commit()
+            }
+
+        }
 
         // 1번 상품
         binding.btn1.setOnClickListener{
