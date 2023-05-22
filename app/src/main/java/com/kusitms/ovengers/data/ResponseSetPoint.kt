@@ -1,15 +1,14 @@
 package com.kusitms.ovengers.data
 
 data class ResponseSetPoint(
-    val code: String,
+    val code: PointCode,
     val `data`: Int,
     val isSuccess: Boolean,
-    val message: String,
-    val page: SetPage,
+    val message: String
 )
 
-data class SetPage(
-    val number: Int,
-    val size: Int,
-    val totalCount: Int
+data class PointCode(
+    val code: Int,
+    val message: String,
+    val status: Int
 )

@@ -12,6 +12,8 @@ import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseNewToken
 import com.kusitms.ovengers.data.ResponseSetPoint
+import com.kusitms.ovengers.databinding.FragmentStoreDetail2Binding
+import com.kusitms.ovengers.databinding.FragmentStoreDetail3Binding
 import com.kusitms.ovengers.databinding.FragmentStoreDetailBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
@@ -19,10 +21,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StoreDetailFragment : Fragment() {
+class StoreDetailFragment_3 : Fragment() {
 
     private lateinit var retAPIS: APIS
-    lateinit var binding: FragmentStoreDetailBinding
+    lateinit var binding: FragmentStoreDetail3Binding
     var num : Int = 0
 
     fun newInstance() : StoreDetailFragment{
@@ -34,7 +36,7 @@ class StoreDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStoreDetailBinding.inflate(inflater, container, false)
+        binding = FragmentStoreDetail3Binding.inflate(inflater, container, false)
 
         // 레트로핏
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)

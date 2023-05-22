@@ -61,7 +61,7 @@ class StoreFragment : Fragment() {
 
         // 2번 상품
         binding.btn2.setOnClickListener{
-            val storeDetail = StoreDetailFragment()
+            val storeDetail = StoreDetailFragment_2()
             val bundle = Bundle()
             bundle.putInt("Num", 2)
             storeDetail.arguments = bundle
@@ -75,7 +75,7 @@ class StoreFragment : Fragment() {
 
         // 3번 상품
         binding.btn3.setOnClickListener{
-            val storeDetail = StoreDetailFragment()
+            val storeDetail = StoreDetailFragment_3()
             val bundle = Bundle()
             bundle.putInt("Num", 3)
             storeDetail.arguments = bundle
@@ -88,7 +88,7 @@ class StoreFragment : Fragment() {
 
         // 4번 상품
         binding.btn4.setOnClickListener{
-            val storeDetail = StoreDetailFragment()
+            val storeDetail = StoreDetailFragment_4()
             val bundle = Bundle()
             bundle.putInt("Num", 4)
             storeDetail.arguments = bundle
@@ -101,7 +101,7 @@ class StoreFragment : Fragment() {
 
         // 5번 상품
         binding.btn5.setOnClickListener{
-            val storeDetail = StoreDetailFragment()
+            val storeDetail = StoreDetailFragment_5()
             val bundle = Bundle()
             bundle.putInt("Num", 5)
             storeDetail.arguments = bundle
@@ -114,7 +114,7 @@ class StoreFragment : Fragment() {
 
         // 6번 상품
         binding.btn6.setOnClickListener{
-            val storeDetail = StoreDetailFragment()
+            val storeDetail = StoreDetailFragment_6()
             val bundle = Bundle()
             bundle.putInt("Num", 6)
             storeDetail.arguments = bundle

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.ChallengeDetailFragment"
+    tools:context=".view.ChallengeDetailFragment_3"
     android:background="@color/main_white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-    
+
             <ImageButton
                 android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_store_img_1"
+            android:src="@drawable/ic_store_img_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
@@ -64,7 +64,7 @@
             android:layout_marginStart="29dp"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/pretendard_bold"
-            android:text="그랜드 조선 제주"
+            android:text="해운대 블루라인 파크"
             android:textColor="@color/gray_500"
             android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="2dp"
             android:fontFamily="@font/pretendard_bold"
-            android:text="4.8"
+            android:text="5.0"
             android:textColor="@color/gray_200"
             android:textSize="13dp"
             app:layout_constraintStart_toEndOf="@+id/textView"
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="27dp"
             android:fontFamily="@font/pretendard_bold"
-            android:text="330,000 원"
+            android:text="32,000 원"
             android:textColor="@color/gray_500"
             android:textSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,12 +173,12 @@
             android:id="@+id/editText"
             android:layout_width="360dp"
             android:layout_height="38dp"
+            android:inputType="number"
+            android:gravity="center|right"
             android:layout_marginStart="27dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_gray_300"
             android:fontFamily="@font/pretendard_bold"
-            android:inputType="number"
-            android:gravity="center|right"
             android:paddingRight="30dp"
             android:textColor="@color/gray_600"
             android:textSize="14dp"
@@ -255,5 +255,4 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

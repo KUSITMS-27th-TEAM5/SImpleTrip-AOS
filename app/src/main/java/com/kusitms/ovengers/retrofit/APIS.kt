@@ -1,5 +1,6 @@
 package com.kusitms.ovengers.retrofit
 
+import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
@@ -11,6 +12,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface APIS {
@@ -35,10 +37,10 @@ interface APIS {
     ) : Call<ResponseGetPoint>
 
     // 스토어 | 포인트 차감 | 유정
-    @GET("/v1/myStore/updatePoint")
+    @PUT("/v1/myStore/updatePoint")
     fun setPoint(
         @Header("Authorization") Authorization: String,
-        @Path("point") point: Int
+        @Body PointRequestBody: PointRequestBody
     ) : Call<ResponseSetPoint>
 
     // accessToken 재발급 | 유정
