@@ -121,4 +121,4 @@ class HomeActivity : AppCompatActivity() {
         homeFragment = HomeFragment().newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
     }
-}
+} // 커밋용

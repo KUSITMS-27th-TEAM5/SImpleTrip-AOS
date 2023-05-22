@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.ChooseDestinationFragment"
     android:orientation="vertical">
-
+    <!-- 커밋용 -->
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"

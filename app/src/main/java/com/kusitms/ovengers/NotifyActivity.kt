@@ -8,4 +8,4 @@ class NotifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notify)
     }
-}
+} // 커밋용
