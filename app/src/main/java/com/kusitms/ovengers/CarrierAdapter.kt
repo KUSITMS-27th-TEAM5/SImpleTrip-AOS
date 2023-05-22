@@ -54,7 +54,7 @@ class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : Recy
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.carrierName.text = dataSet[position].carrierName
+        holder.carrierName.text = dataSet[position].name
 
         if(itemClick != null) {
             holder?.itemView!!.setOnClickListener{v ->
