@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kusitms.ovengers.*
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.databinding.FragmentHomeBinding
+import java.time.LocalDate
 
 
 class HomeFragment : Fragment() {
@@ -57,9 +58,9 @@ class HomeFragment : Fragment() {
 
         binding.carrierWho.setText("${name} 님의 티켓 캐리어")
 
-        dataSet.add(RequestMakeCarrier("a","d","A","일본 여행"))
+        dataSet.add(RequestMakeCarrier("a","d", LocalDate.now(),LocalDate.now()))
 
-        dataSet.add(RequestMakeCarrier("a","d","A","미국 여행"))
+        dataSet.add(RequestMakeCarrier("a","d",LocalDate.now(),LocalDate.now()))
 
 
 

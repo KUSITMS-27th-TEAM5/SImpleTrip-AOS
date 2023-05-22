@@ -11,12 +11,15 @@ import com.bumptech.glide.Glide
 import com.kusitms.ovengers.HomeActivity
 import com.kusitms.ovengers.MyApplication
 import com.kusitms.ovengers.R
+import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.ResponseMakeCarrier
+import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.databinding.FragmentChooseDestinationBinding
 import com.kusitms.ovengers.databinding.FragmentCreateNameBinding
 import com.kusitms.ovengers.retrofit.APIS
+import com.kusitms.ovengers.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Response
 import java.time.LocalDate
@@ -48,6 +51,7 @@ class CreateNameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCreateNameBinding.inflate(inflater,container,false)
+        retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
         val view = binding.root
         return view
     }
@@ -57,12 +61,11 @@ class CreateNameFragment : Fragment() {
 
         Glide.with(this).load(R.raw.carrierr).into(binding.imgCarrier)
 
-
         val startDay= MyApplication.prefs.getString("startDay","String")
-       val endDay =  MyApplication.prefs.getString("endDay","String")
+        val endDay =  MyApplication.prefs.getString("endDay","String")
 
         val pattern = DateTimeFormatter.ofPattern("yyyy-M-d")
-         var startdday = LocalDate.parse(startDay, pattern)
+        var startdday = LocalDate.parse(startDay, pattern)
         var enddday = LocalDate.parse(endDay,pattern)
 
         binding.btnBack.setOnClickListener {
@@ -78,14 +81,22 @@ class CreateNameFragment : Fragment() {
             if(carrierName=="") {
                 Toast.makeText(context,"캐리어 이름을 입력해주세요",Toast.LENGTH_SHORT).show()
             } else {
+                /*
                 MyApplication.prefs.setString("carrierName", carrierName)
-                val data = RequestMakeCarrier(
-                    MyApplication.prefs.getString("destination","String"),
-                            MyApplication.prefs.getString("carrierName","String"),
-                    startdday,
-                    enddday
 
-                )
+                val data = RequestMakeCarrier(
+                    MyApplication.prefs.getString("destination","String"), // 여행 국가
+                    MyApplication.prefs.getString("carrierName","String"), // 캐리어 이름
+                    startdday, // startDate
+                    enddday // endDate
+
+                )*/
+
+                val destination : String = "일본"
+                val name : String = "승균 캐리어"
+
+                // 함수 호출
+                createCarrier(accessToken, destination, name, startdday, enddday)
 
                 val hActivity = activity as HomeActivity
                 hActivity.carrierMakeSuccess()
@@ -97,5 +108,25 @@ class CreateNameFragment : Fragment() {
 
     }
 
+    private fun createCarrier(accessToken: String, destination : String, name : String, startdday : LocalDate, enddday : LocalDate) {
+        val bearerToken = "Bearer $accessToken" // Bearer 추가
+        retAPIS.addCarrier(
+            bearerToken,
+            RequestMakeCarrier(destination, name, startdday, enddday)
+        )
+            .enqueue(object : retrofit2.Callback<ResponseMakeCarrier> {
+            override fun onResponse(call: Call<ResponseMakeCarrier>, response: Response<ResponseMakeCarrier>) {
+                if (response.isSuccessful) {
+                    val resultMessage = response.body()?.resultMessage.toString()
+                    Log.d("addCarrier Response Message : ", resultMessage)
+
+                } else {
+                    Log.d("addCarrier Response : ", "Fail 1")
+                }
+            } override fun onFailure(call: Call<ResponseMakeCarrier>, t: Throwable) {
+                Log.d("addCarrier Response : ", "Fail 2")
+            }
+        })
+    }
 
 }
