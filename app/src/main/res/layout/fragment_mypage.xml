@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mypage">
+
+
+    <ImageView
+        android:id="@+id/beforeBtn"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:src="@drawable/btn_mypage_before"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/profileBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beforeBtn"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--프로필-->
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="89dp"
+                android:layout_height="89dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_profile_default" />
+
+            <!--카메라-->
+            <ImageButton
+                android:id="@+id/buttonCamera"
+                android:layout_width="22dp"
+                android:layout_height="15.76dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="225dp"
+                android:src="@drawable/ic_camera"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nameBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileBox">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김지니 님"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/editBtn"
+                android:src="@drawable/btn_mypage_edit"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/name"/>
+
+            <TextView
+                android:id="@+id/logout"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:text="로그아웃"
+                android:textColor="#6B444444"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameBox">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:src="@drawable/ic_mypage_cashbg"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/coin"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_mypage_coin"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/geniecash"
+                android:layout_marginStart="50dp"/>
+
+            <TextView
+                android:id="@+id/geniecash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendard_bold"
+                android:text="MY 지니캐시"
+                android:textColor="#855EFF"
+                android:layout_marginStart="60dp"
+                android:textSize="15sp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:fontFamily="@font/pretendard_bold"
+                android:textColor="#855EFF"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/coin"/>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/storeBox"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cash">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/storetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="스토어 예매내역"
+                android:textSize="13sp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:textColor="#444444"
+                android:layout_marginStart="60dp"
+                android:paddingVertical="20dp"/>
+
+            <ImageView
+                android:id="@+id/next01"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_mypage_next"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                android:clickable="true"
+                android:onClick="onNext01Click"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/settingBox"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storeBox">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/settingtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="환경설정"
+                android:textSize="13sp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:textColor="#444444"
+                android:layout_marginStart="60dp"
+                android:paddingVertical="20dp"/>
+
+            <ImageView
+                android:id="@+id/next02"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_mypage_next"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/customerBox"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingBox">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/customertext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="고객센터"
+                android:textSize="13sp"
+                android:fontFamily="@font/pretendard_semibold"
+                android:textColor="#444444"
+                android:layout_marginStart="60dp"
+                android:paddingVertical="20dp"/>
+
+            <ImageView
+                android:id="@+id/next03"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_mypage_next"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
