@@ -143,4 +143,4 @@ class MainActivity : AppCompatActivity() {
         finish()
         startActivity(intent)
     }
-}
+} // 커밋용

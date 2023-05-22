@@ -44,6 +44,6 @@ class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) 
     }
 
 
-}
+} // 커밋용
 
 

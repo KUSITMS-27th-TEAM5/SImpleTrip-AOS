@@ -47,4 +47,4 @@ class DestinationAdapter(private val dataSet : ArrayList<Destination>) : Recycle
         }
     }
 
-}
+} // 커밋용

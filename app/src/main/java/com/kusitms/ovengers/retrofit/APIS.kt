@@ -1,9 +1,11 @@
 package com.kusitms.ovengers.retrofit
 
 import com.kusitms.ovengers.data.PointRequestBody
+import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
+import com.kusitms.ovengers.data.ResponseMakeCarrier
 import com.kusitms.ovengers.data.ResponseNewToken
 import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
@@ -48,5 +50,14 @@ interface APIS {
     fun newToken(
         @Header("Authorization") Authorization: String,
     ) : Call<ResponseNewToken>
+
+    // 캐리어 추가 | 승균
+    @POST("/v1/myCarrier/addCarrier")
+    fun addCarrier(
+        @Header("Authorization") Authorization: String,
+        @Body RequestMakeCarrier: RequestMakeCarrier
+    ) : Call<ResponseMakeCarrier>
+
+    // 커밋용
 
 }

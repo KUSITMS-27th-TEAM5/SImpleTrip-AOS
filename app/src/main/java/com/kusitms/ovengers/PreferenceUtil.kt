@@ -17,4 +17,4 @@ class PreferenceUtil(context: Context)
         prefs.edit().putString(key, str).apply()
     }
 
-}
+} // 커밋용

@@ -14,4 +14,4 @@ class MyApplication : Application()
         prefs = PreferenceUtil(applicationContext)
         super.onCreate()
     }
-}
+} // 커밋용

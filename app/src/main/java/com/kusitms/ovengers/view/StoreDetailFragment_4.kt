@@ -156,4 +156,4 @@ class StoreDetailFragment_4 : Fragment() {
         })
     }
 
-}
+} // 커밋용

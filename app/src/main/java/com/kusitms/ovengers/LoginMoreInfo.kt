@@ -225,7 +225,7 @@ class LoginMoreInfo : AppCompatActivity(){
 
 
 
-} // 커밋용
+} //커밋용
 
 
 
