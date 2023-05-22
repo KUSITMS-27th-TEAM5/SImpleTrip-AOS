@@ -123,7 +123,7 @@ class ChooseDateFragment : Fragment() {
                 MyApplication.prefs.setString("endDay",endDay)
                 val hActivity = activity as HomeActivity
                 hActivity.step1Step2()
-            }
+            } // 얍
 
 
         }
