@@ -3,19 +3,20 @@ package com.kusitms.ovengers.retrofit
 import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.RequestSignUp
+import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.data.ResponseMakeCarrier
 import com.kusitms.ovengers.data.ResponseNewToken
 import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
+import com.kusitms.ovengers.data.ResponseStorageCarrier
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import retrofit2.http.Path
 
 interface APIS {
 
@@ -58,6 +59,16 @@ interface APIS {
         @Body RequestMakeCarrier: RequestMakeCarrier
     ) : Call<ResponseMakeCarrier>
 
-    // 커밋용
+    // 보관함 | 캐리어 조회 | 유정
+    @GET("/v1/storage")
+    fun getStorage(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseStorageCarrier>
+
+    // 알림 | 알림 조회 | 유정
+    @GET("/v1/myAlarm/selectAllAlarms")
+    fun getAlarms(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseAlarms>
 
 }
