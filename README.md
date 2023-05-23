@@ -1,2 +1,10 @@
 # 🧞트립지니(TripGenie)🧞
-![Slide 16_9 - 1 (4)](https://user-images.githubusercontent.com/108562467/232030862-d151776a-1624-4d36-870f-9ab39ad654fe.png)
+
+## Frontend 작업 주소
+https://github.com/KUSITMS-27th-TEAM5/SImpleTrip-AOS
+
+## Backend 작업 주소
+https://github.com/KUSITMS-27th-TEAM5/SImpleTrip-BE
+
+## APK 파일 위치
+https://github.com/KUSITMS-27th-TEAM5/TripGenie-APK/tree/main
