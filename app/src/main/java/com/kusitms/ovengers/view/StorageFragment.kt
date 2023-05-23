@@ -55,7 +55,6 @@ class StorageFragment : Fragment() {
                 addToBackStack(null)
                 commit()
             }
-
         }
 
         // MyPage 이동

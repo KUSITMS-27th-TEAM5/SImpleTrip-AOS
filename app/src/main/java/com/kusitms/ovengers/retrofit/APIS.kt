@@ -3,6 +3,7 @@ package com.kusitms.ovengers.retrofit
 import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.RequestSignUp
+import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.data.ResponseMakeCarrier
@@ -16,7 +17,6 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import retrofit2.http.Path
 
 interface APIS {
 
@@ -64,5 +64,11 @@ interface APIS {
     fun getStorage(
         @Header("Authorization") Authorization: String
     ) : Call<ResponseStorageCarrier>
+
+    // 알림 | 알림 조회 | 유정
+    @GET("/v1/myAlarm/selectAllAlarms")
+    fun getAlarms(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseAlarms>
 
 }
