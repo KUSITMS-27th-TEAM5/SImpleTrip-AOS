@@ -1,6 +1,5 @@
 package com.kusitms.ovengers.view
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.MyApplication
 import com.kusitms.ovengers.Mypage
-import com.kusitms.ovengers.NotifyActivity
-import com.kusitms.ovengers.NotifyFragment
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.StorageAdapter
 import com.kusitms.ovengers.StorageViewModel
