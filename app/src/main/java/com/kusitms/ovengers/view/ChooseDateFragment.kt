@@ -71,16 +71,15 @@ class ChooseDateFragment : Fragment() {
 
 
         //날짜 형태
-        val dateFormat : DateFormat = SimpleDateFormat("yyyy년mm월dd일")
+        val dateFormat: DateFormat = SimpleDateFormat("yyyy년mm월dd일")
         //date타입
-        val date : Date = Date(binding.calendarView.date)
+        val date: Date = Date(binding.calendarView.date)
 
 
-        binding.startDate.setOnClickListener{
+        binding.startDate.setOnClickListener {
 //            binding.calendarView.visibility=View.VISIBLE
 
-            binding.calendarView.setOnDateChangeListener{
-                calendarView, y, m, d ->
+            binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 startYear = "${y}"
                 startMonth = "${m}"
                 startDate = "${d}"
@@ -91,11 +90,10 @@ class ChooseDateFragment : Fragment() {
 
         }
 
-        binding.endDate.setOnClickListener{
+        binding.endDate.setOnClickListener {
 //            binding.calendarView.visibility=View.VISIBLE
 
-            binding.calendarView.setOnDateChangeListener{
-                    calendarView, y, m, d ->
+            binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 endYear = "${y}"
                 endMonth = "${m}"
                 endDate = "${d}"
@@ -109,14 +107,23 @@ class ChooseDateFragment : Fragment() {
 
 
         binding.btnNext.setOnClickListener {
-            if(startDay==""||endDay=="") {
-                Toast.makeText(context, "날짜를 선택해주세요",Toast.LENGTH_SHORT).show()
-            } else{
-                MyApplication.prefs.setString("startDay",startDay)
+            if (startDay == "" || endDay == "") {
+                Toast.makeText(context, "날짜를 선택해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+
+                //우선 날짜는 한자리 수 월,일로 택해야함
+
+//                val pattern = DateTimeFormatter.ofPattern("yyyy-M-d")
+//                var startdday = LocalDate.parse(startDay, pattern)
+//                var enddday = LocalDate.parse(endDay,pattern)
+//                Log.d("startdday", startdday.toString())
+//                MyApplication.prefs.setString("startDay", startdday.toString())
+//                MyApplication.prefs.setString("endDay", enddday.toString())
+               MyApplication.prefs.setString("startDay",startDay)
                 MyApplication.prefs.setString("endDay",endDay)
                 val hActivity = activity as HomeActivity
                 hActivity.step1Step2()
-            }
+            } // 얍
 
 
         }
@@ -127,21 +134,7 @@ class ChooseDateFragment : Fragment() {
         }
 
 
-
-//        binding.btnNext.setOnClickListener {
-//            val hActivity = activity as HomeActivity
-//            hActivity.step1Step2()
-//        }
     }
 
 
-
-
-
-
-
-
-
-
-
-}
+} // 커밋용

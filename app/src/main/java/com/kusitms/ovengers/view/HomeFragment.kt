@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.kusitms.ovengers.*
 import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.databinding.FragmentHomeBinding
+import java.time.LocalDate
 
 
 class HomeFragment : Fragment() {
@@ -20,6 +21,7 @@ class HomeFragment : Fragment() {
     private lateinit var carrierAdapter: CarrierAdapter
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
 
     val dataSet = ArrayList<RequestMakeCarrier>()
 
@@ -56,9 +58,9 @@ class HomeFragment : Fragment() {
 
         binding.carrierWho.setText("${name} 님의 티켓 캐리어")
 
-        dataSet.add(RequestMakeCarrier("a","d","A","일본 여행"))
+        dataSet.add(RequestMakeCarrier("a","d", LocalDate.now(),LocalDate.now()))
 
-        dataSet.add(RequestMakeCarrier("a","d","A","미국 여행"))
+        dataSet.add(RequestMakeCarrier("a","d",LocalDate.now(),LocalDate.now()))
 
 
 
@@ -120,4 +122,4 @@ class HomeFragment : Fragment() {
     }
 
 
-}
+} // 커밋용

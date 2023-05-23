@@ -22,4 +22,4 @@ class StorageFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_storage, container, false)
     }
-}
+} // 커밋용

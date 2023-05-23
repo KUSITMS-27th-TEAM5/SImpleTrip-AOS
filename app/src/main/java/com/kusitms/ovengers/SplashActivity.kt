@@ -19,4 +19,4 @@ class SplashActivity : AppCompatActivity() {
             // 5.2초
         }, 5200)
     }
-} // 커밋용
+} //커밋용

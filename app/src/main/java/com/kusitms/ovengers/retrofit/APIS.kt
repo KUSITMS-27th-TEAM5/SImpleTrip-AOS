@@ -1,6 +1,14 @@
 package com.kusitms.ovengers.retrofit
 
-import com.kusitms.ovengers.data.*
+import com.kusitms.ovengers.data.PointRequestBody
+import com.kusitms.ovengers.data.RequestMakeCarrier
+import com.kusitms.ovengers.data.RequestSignUp
+import com.kusitms.ovengers.data.ResponseGetPoint
+import com.kusitms.ovengers.data.ResponseGoogleSignup
+import com.kusitms.ovengers.data.ResponseMakeCarrier
+import com.kusitms.ovengers.data.ResponseNewToken
+import com.kusitms.ovengers.data.ResponseSetPoint
+import com.kusitms.ovengers.data.ResponseSignUp
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -31,10 +39,10 @@ interface APIS {
     ) : Call<ResponseGetPoint>
 
     // 스토어 | 포인트 차감 | 유정
-    @GET("/v1/myStore/updatePoint")
+    @PUT("/v1/myStore/updatePoint")
     fun setPoint(
         @Header("Authorization") Authorization: String,
-        @Path("point") point: Int
+        @Body PointRequestBody: PointRequestBody
     ) : Call<ResponseSetPoint>
 
     // accessToken 재발급 | 유정
@@ -43,22 +51,13 @@ interface APIS {
         @Header("Authorization") Authorization: String,
     ) : Call<ResponseNewToken>
 
-    // 나의 프로필 이미지 수정 | 시연
-    @PUT("/mypage/updateMyProfileImage")
-    fun upadateProfileImg(
+    // 캐리어 추가 | 승균
+    @POST("/v1/myCarrier/addCarrier")
+    fun addCarrier(
+        @Header("Authorization") Authorization: String,
+        @Body RequestMakeCarrier: RequestMakeCarrier
+    ) : Call<ResponseMakeCarrier>
 
-    ) : Call<updateProfileImage>
-
-    // 나의 닉네임 수정
-    @PUT("/mypage/updateMyNickname")
-    fun updateNickname(
-
-    ) : Call<RequestUpdateNickname>
-
-    // 나의 프로필 조회
-    @GET("/mypage/selectMyProfile")
-    fun selecetMyProfile(
-
-    ) : Call<SelectMyProfile>
+    // 커밋용
 
 }
