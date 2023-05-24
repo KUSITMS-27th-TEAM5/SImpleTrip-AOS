@@ -41,6 +41,7 @@ class CarrierViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseGetCarrier>, response: Response<ResponseGetCarrier>) {
                 if (response.isSuccessful) {
 
+
                     Log.d("getCarrier Response : ", "success")
 
 

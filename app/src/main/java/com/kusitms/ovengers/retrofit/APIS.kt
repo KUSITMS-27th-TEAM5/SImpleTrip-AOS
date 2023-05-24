@@ -102,7 +102,11 @@ interface APIS {
         @Query("id") id : String,
     ) : Call<ResponseTicketExist>
 
-
+    //캐리어 가져오기 ㅣ 승균
+    @GET("/v1/myCarrier/selectAll")
+    fun getCarrier(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseGetCarrier>
 
 
 
