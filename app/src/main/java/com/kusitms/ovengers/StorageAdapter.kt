@@ -34,6 +34,7 @@ class StorageAdapter (
     override fun getItemCount(): Int {
         return storageList.size
     }
+
 }
 
 class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
