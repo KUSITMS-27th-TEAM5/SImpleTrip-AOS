@@ -46,6 +46,16 @@ class StorageDetailFragment : Fragment() {
         // Retrofit
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
+        // 뒤로 가기 버튼
+        binding.btnBack.setOnClickListener{
+            val storageFragment = StorageFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, storageFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
         // SharedPreferences 조희
         // val accessToken = MyApplication.prefs.getString("accessToken", "token")
         val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
@@ -71,7 +81,7 @@ class StorageDetailFragment : Fragment() {
         // RecyclerView
         val recyclerView : RecyclerView = binding.recyclerview
         recyclerView.adapter = storageDetailAdapter
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 1)
 
         // RecyclerView - ViewModel
         viewModel.ticketList.observe(viewLifecycleOwner) { ticketList ->

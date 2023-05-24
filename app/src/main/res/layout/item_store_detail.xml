@@ -25,6 +25,7 @@
         android:layout_marginStart="20dp"
         android:fontFamily="@font/pretendard_bold"
         android:text="입국 비행기 티켓"
+        android:maxLength="54"
         android:textColor="@color/main_white"
         android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
