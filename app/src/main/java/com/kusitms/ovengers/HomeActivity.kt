@@ -120,5 +120,6 @@ class HomeActivity : AppCompatActivity() {
     fun carrierMakeSuccess() {
         homeFragment = HomeFragment().newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
+        HideBottomNav(false)
     }
 }

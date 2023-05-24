@@ -71,7 +71,7 @@ class ChooseDateFragment : Fragment() {
 
 
         //날짜 형태
-        val dateFormat: DateFormat = SimpleDateFormat("yyyy년mm월dd일")
+      //  val dateFormat: DateFormat = SimpleDateFormat("yyyy년mm월dd일")
         //date타입
         val date: Date = Date(binding.calendarView.date)
 
@@ -85,7 +85,14 @@ class ChooseDateFragment : Fragment() {
                 startDate = "${d}"
                 binding.startDate.setText("${y}년 ${m}월 ${d}일")
                 binding.startDate.setTextColor(Color.parseColor("#855EFF"))
-                startDay = "${startYear}-${startMonth}-${startDate}"
+                if (m<10) {
+                    startMonth = "0${m}"
+                }
+                if (d<10) {
+                    startDate = "0${d}"
+                }
+                startDay = "${startYear}${startMonth}${startDate}"
+                Log.d("endday",startDay)
             }
 
         }
@@ -99,7 +106,14 @@ class ChooseDateFragment : Fragment() {
                 endDate = "${d}"
                 binding.endDate.setText("${y}년 ${m}월 ${d}일")
                 binding.endDate.setTextColor(Color.parseColor("#855EFF"))
-                endDay = "${endYear}-${endMonth}-${endDate}"
+                if (m<10) {
+                    endMonth = "0${m}"
+                }
+                if (d<10) {
+                    endDate = "0${d}"
+                }
+                endDay = "${endYear}${endMonth}${endDate}"
+                Log.d("endday",endDay)
             }
         }
 

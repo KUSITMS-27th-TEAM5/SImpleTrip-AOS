@@ -1,5 +1,6 @@
 package com.kusitms.ovengers
 
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -23,11 +24,17 @@ class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) 
             destinationImg = view.findViewById(R.id.img_ticket)
             ticketName = view.findViewById(R.id.ticketName)
         }
+
     }
     interface ItemClick {
         fun onClick(view: View,position: Int)
     }
     var itemClick : ItemClick?=null
+
+    interface ItemLongClick {
+        fun onLongClick(view: View,position: Int)
+    }
+    var itemLongClick : CarrierAdapter.ItemLongClick?=null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.destinationImg.setImageResource(dataSet[position].img)
@@ -35,6 +42,13 @@ class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) 
         if(itemClick != null) {
             holder?.itemView!!.setOnClickListener{v ->
                 itemClick!!.onClick(v,position)
+            }
+        }
+
+        if (itemLongClick !=null) {
+            holder?.itemView!!.setOnLongClickListener {v->
+                itemLongClick!!.onLongClick(v,position)
+                true
             }
         }
     }

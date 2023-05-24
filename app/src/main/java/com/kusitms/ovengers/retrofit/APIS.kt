@@ -1,14 +1,6 @@
 package com.kusitms.ovengers.retrofit
 
-import com.kusitms.ovengers.data.PointRequestBody
-import com.kusitms.ovengers.data.RequestMakeCarrier
-import com.kusitms.ovengers.data.RequestSignUp
-import com.kusitms.ovengers.data.ResponseGetPoint
-import com.kusitms.ovengers.data.ResponseGoogleSignup
-import com.kusitms.ovengers.data.ResponseMakeCarrier
-import com.kusitms.ovengers.data.ResponseNewToken
-import com.kusitms.ovengers.data.ResponseSetPoint
-import com.kusitms.ovengers.data.ResponseSignUp
+import com.kusitms.ovengers.data.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -58,4 +50,16 @@ interface APIS {
         @Body RequestMakeCarrier: RequestMakeCarrier
     ) : Call<ResponseMakeCarrier>
 
+    //캐리어 가져오기 ㅣ 승균
+    @GET("/v1/myCarrier/selectAll")
+    fun getCarrier(
+        @Header("Authorization") Authorization: String
+    ) : Call<ResponseGetCarrier>
+
+    @PUT("/v1/myCarrier/deleteCarrier")
+    fun deleteCarrier(
+        @Header("Authorization") Authorization: String,
+        @Body RequestDeleteCarrier : RequestDeleteCarrier
+
+    ) : Call<ResponseDeleteCarrier>
 }

@@ -8,10 +8,13 @@ import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kusitms.ovengers.data.Ddata
 import com.kusitms.ovengers.data.RequestMakeCarrier
+import com.kusitms.ovengers.data.ResponseGetCarrier
+import com.kusitms.ovengers.data.carrierInfo
 import java.time.LocalDate
 
-class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : RecyclerView.Adapter<CarrierAdapter.ViewHolder>() {
+class CarrierAdapter(private val dataSet :ArrayList<Ddata>) : RecyclerView.Adapter<CarrierAdapter.ViewHolder>() {
 
 
 //   inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
@@ -30,7 +33,7 @@ class CarrierAdapter(private val dataSet : ArrayList<RequestMakeCarrier>) : Recy
 //
 //    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrierAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.carrier_rv_item,parent,false)
 
         return ViewHolder(view)

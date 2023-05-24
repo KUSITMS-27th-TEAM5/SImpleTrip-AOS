@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class RequestMakeCarrier(
     val country : String,
     val name : String,
-    val startDate : LocalDate,
-    val endDate : LocalDate,
+    val startDate : String,
+    val endDate : String,
 
 )
