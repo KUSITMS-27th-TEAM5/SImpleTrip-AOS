@@ -5,6 +5,7 @@ import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseCarrierInfo
+import com.kusitms.ovengers.data.ResponseGetMemo
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGetTicket
 import com.kusitms.ovengers.data.ResponseGoogleSignup
@@ -98,5 +99,13 @@ interface APIS {
         @Path("carrierId") carrierId : String,
         @Query("id") id : String,
     ) : Call<ResponseTicketExist>
+
+    // 보관함 | 티켓 선택 > 기록 O > 조회 | 유정
+    @GET("/v1/ticket/memo/{carrierId}")
+    fun getMemo(
+        @Header("Authorization") Authorization: String,
+        @Path("carrierId") carrierId : String,
+        @Query("id") id : String,
+    ): Call<ResponseGetMemo>
 
 }
