@@ -19,11 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/pretendard_bold"
         android:text="입국 비행기 티켓"
+        android:maxLength="54"
         android:textColor="@color/main_white"
         android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
@@ -39,6 +41,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/bg_store_detail_ex" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

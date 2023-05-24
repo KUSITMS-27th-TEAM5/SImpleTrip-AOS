@@ -53,9 +53,14 @@ class NotifyFragment : Fragment() {
         val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
         val username = MyApplication.prefs.getString("username", "username")
 
-        // Notify 페이지 이동
+        // 뒤로 가기 버튼
         binding.btnBack.setOnClickListener{
-            // 프레그먼트 종료하는 로직 구현해랏
+            val storageFragment = StorageFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, storageFragment)
+                addToBackStack(null)
+                commit()
+            }
         }
 
         // View 모델
