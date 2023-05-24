@@ -2,6 +2,7 @@ package com.kusitms.ovengers.retrofit
 
 import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestMakeCarrier
+import com.kusitms.ovengers.data.RequestMemoDto
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseCarrierInfo
@@ -11,17 +12,22 @@ import com.kusitms.ovengers.data.ResponseGetTicket
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.data.ResponseMakeCarrier
 import com.kusitms.ovengers.data.ResponseNewToken
+import com.kusitms.ovengers.data.ResponsePostMemo
 import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.data.ResponseStorageCarrier
 import com.kusitms.ovengers.data.ResponseTicketExist
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
+import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -107,5 +113,6 @@ interface APIS {
         @Path("carrierId") carrierId : String,
         @Query("id") id : String,
     ): Call<ResponseGetMemo>
+
 
 }

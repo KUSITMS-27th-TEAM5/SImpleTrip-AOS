@@ -84,7 +84,7 @@ class ReviewEditFragment : Fragment() {
                     val text = response.body()?.data?.content.toString()
 
                     // 이미지 설정
-                    context?.let { Glide.with(it).load(url).error(R.drawable.bg_store_detail_ex).into(binding.img) };
+                    context?.let { Glide.with(it).load(url).error(R.drawable.bg_store_detail_ex).into(binding.img) }
 
                     // 텍스트 설정
                     binding.text.setText(text)
