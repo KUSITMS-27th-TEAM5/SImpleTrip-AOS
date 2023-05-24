@@ -9,7 +9,7 @@
     android:background="@drawable/border"
     android:layout_marginBottom="20dp"
     android:orientation="vertical">
-
+    <!-- 커밋용 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"

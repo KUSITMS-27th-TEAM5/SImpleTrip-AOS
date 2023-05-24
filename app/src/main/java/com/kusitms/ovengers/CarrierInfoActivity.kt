@@ -1,16 +1,13 @@
 package com.kusitms.ovengers
 
 import android.animation.ObjectAnimator
-import android.app.ActivityOptions
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,6 +20,7 @@ import com.kusitms.ovengers.databinding.ActivityCarrierInfoBinding
 class CarrierInfoActivity : AppCompatActivity() {
     private lateinit var carrierMoreInfoAdapter: CarrierMoreInfoAdapter
     private lateinit var binding : ActivityCarrierInfoBinding
+
 
     private val dataSet = ArrayList<carrierMoreInfo>()
     private var isFabOpen = false
@@ -183,4 +181,4 @@ class CarrierInfoActivity : AppCompatActivity() {
 
 
 
-}
+} // 커밋용

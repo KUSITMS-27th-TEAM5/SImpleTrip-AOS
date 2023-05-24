@@ -122,4 +122,4 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
         HideBottomNav(false)
     }
-}
+} // 커밋용

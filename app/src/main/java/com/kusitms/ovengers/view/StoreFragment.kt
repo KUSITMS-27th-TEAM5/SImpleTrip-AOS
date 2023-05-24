@@ -35,7 +35,7 @@ class StoreFragment : Fragment() {
         // 유저 네임 설정
         binding.username.text = username
 
-        // Mypage 이동
+        // MyPage 이동
         binding.btnMypage.setOnClickListener {
             val myPage = Mypage()
             fragmentManager?.beginTransaction()?.apply {
@@ -127,4 +127,4 @@ class StoreFragment : Fragment() {
 
         return binding.root
     }
-}
+} // 커밋용

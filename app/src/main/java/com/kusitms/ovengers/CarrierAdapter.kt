@@ -1,37 +1,26 @@
 package com.kusitms.ovengers
 
-import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.kusitms.ovengers.data.Ddata
-import com.kusitms.ovengers.data.RequestMakeCarrier
-import com.kusitms.ovengers.data.ResponseGetCarrier
-import com.kusitms.ovengers.data.carrierInfo
+import com.kusitms.ovengers.data.*
 import java.time.LocalDate
 
-class CarrierAdapter(private val dataSet :ArrayList<Ddata>) : RecyclerView.Adapter<CarrierAdapter.ViewHolder>() {
+class CarrierAdapter(
+    private val carrierList: MutableList<Ddata> = mutableListOf(),
+
+)
+    : RecyclerView.Adapter<CarrierAdapter.ViewHolder>() {
 
 
-//   inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-//        val carrierName : TextView
-//
-//
-//        init {
-//            view.setOnClickListener{
-//                itemClickListner?.onItemClick(adapterPosition)
-//            }
-//            carrierName = view.findViewById(R.id.textview_carrier_name)
-//
-//
-//        }
-//
-//
-//    }
+    fun updateList(newList: List<Ddata>) {
+        carrierList.clear()
+        carrierList.addAll(newList)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.carrier_rv_item,parent,false)
@@ -57,7 +46,10 @@ class CarrierAdapter(private val dataSet :ArrayList<Ddata>) : RecyclerView.Adapt
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.carrierName.text = dataSet[position].name
+       val carrierList = carrierList[position]
+        holder.bind(carrierList)
+
+//        holder.carrierName.text = carrierList[position].name
 
         if(itemClick != null) {
             holder?.itemView!!.setOnClickListener{v ->
@@ -77,20 +69,24 @@ class CarrierAdapter(private val dataSet :ArrayList<Ddata>) : RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
-        return dataSet.size
+        return carrierList.size
     }
      class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        val carrierName : TextView
+        val carrierName : TextView = view.findViewById(R.id.textview_carrier_name)
 
 
-        init {
+         fun bind(task:Ddata){
+             carrierName.text = task.name
+         }
 
-
-            carrierName = view.findViewById(R.id.textview_carrier_name)
-
-
-        }
+//        init {
+//
+//
+//            carrierName = view.findViewById(R.id.textview_carrier_name)
+//
+//
+//        }
 
 
     }
-}
+} // 커밋용

@@ -41,4 +41,4 @@ class StoreFinishFragment : Fragment() {
 
         return binding.root
     }
-}
+} // 커밋용
