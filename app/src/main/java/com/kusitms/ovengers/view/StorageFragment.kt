@@ -1,11 +1,13 @@
 package com.kusitms.ovengers.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.MyApplication
@@ -13,9 +15,13 @@ import com.kusitms.ovengers.Mypage
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.StorageAdapter
 import com.kusitms.ovengers.StorageViewModel
+import com.kusitms.ovengers.data.ResponseCarrierInfo
 import com.kusitms.ovengers.databinding.FragmentStorageBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class StorageFragment : Fragment() {
@@ -70,11 +76,23 @@ class StorageFragment : Fragment() {
         // 유저 이름 설정
         binding.username.text = username
 
-        // View 모델
+        // View Model
         viewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
 
         // StorageAdapter 초기화
-        storageAdapter = StorageAdapter {
+        storageAdapter = StorageAdapter { task ->
+
+            // Clicked Carrier Id
+            Log.d("StorageFragment", "Clicked Carrier Id: ${task.id}")
+            var carrierId = task.id.toString()
+            MyApplication.prefs.setString("carrierId", carrierId)
+
+            val storageDetailFragment = StorageDetailFragment()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, storageDetailFragment)
+                addToBackStack(null)
+                commit()
+            }
 
         }
 
@@ -90,4 +108,5 @@ class StorageFragment : Fragment() {
 
         return binding.root
     }
+
 }

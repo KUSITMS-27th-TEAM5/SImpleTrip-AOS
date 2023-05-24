@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.kusitms.ovengers.R
 
-class ReviewFragment : Fragment() {
+class ReviewEditFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class ReviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review, container, false)
+        return inflater.inflate(R.layout.fragment_review_edit, container, false)
     }
 
 }
