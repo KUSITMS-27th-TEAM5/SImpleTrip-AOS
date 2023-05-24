@@ -82,10 +82,9 @@ class StorageFragment : Fragment() {
         // StorageAdapter 초기화
         storageAdapter = StorageAdapter { task ->
 
-            // 클릭한 아이템 id 값
-            Log.d("StorageFragment", "Clicked item position: ${task.id}")
+            // Clicked Carrier Id
+            Log.d("StorageFragment", "Clicked Carrier Id: ${task.id}")
             var carrierId = task.id.toString()
-
             MyApplication.prefs.setString("carrierId", carrierId)
 
             val storageDetailFragment = StorageDetailFragment()

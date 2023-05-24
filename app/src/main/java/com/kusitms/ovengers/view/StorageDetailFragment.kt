@@ -15,6 +15,7 @@ import com.kusitms.ovengers.StorageDetailAdapter
 import com.kusitms.ovengers.StorageDetailViewModel
 import com.kusitms.ovengers.StorageViewModel
 import com.kusitms.ovengers.data.ResponseCarrierInfo
+import com.kusitms.ovengers.data.ResponseTicketExist
 import com.kusitms.ovengers.databinding.FragmentStorageDetailBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
@@ -73,9 +74,16 @@ class StorageDetailFragment : Fragment() {
         // View Model
         viewModel = ViewModelProvider(this).get(StorageDetailViewModel::class.java)
 
-        // StorageDetailAdapter 초기화
-        storageDetailAdapter = StorageDetailAdapter {
+        // StorageDetailAdapter 클릭 이벤트 구현
+        storageDetailAdapter = StorageDetailAdapter { task ->
 
+            // Clicked Ticket Id
+            Log.d("StorageDetailFragment", "Clicked Ticket Id: ${task.id}")
+            var ticketId = task.id.toString()
+            MyApplication.prefs.setString("ticketId", ticketId)
+            var carrierId = MyApplication.prefs.getString("carrierId", "1")
+
+            getTicketExist(accessToken, carrierId, ticketId)
         }
 
         // RecyclerView
@@ -92,10 +100,10 @@ class StorageDetailFragment : Fragment() {
     }
 
     //  캐리어 선택 > 정보 조회 API
-    private fun getCarrierInfo(accessToken : String, carrierNum : String) {
+    private fun getCarrierInfo(accessToken : String, carrierId : String) {
         // Bearer 추가
         val bearerToken = "Bearer $accessToken"
-        retAPIS.getCarrierInfo(bearerToken, carrierNum).enqueue(object : Callback<ResponseCarrierInfo> {
+        retAPIS.getCarrierInfo(bearerToken, carrierId).enqueue(object : Callback<ResponseCarrierInfo> {
             override fun onResponse(call: Call<ResponseCarrierInfo>, response: Response<ResponseCarrierInfo>) {
                 if (response.isSuccessful) {
                     var name = response.body()?.data?.name
@@ -116,5 +124,46 @@ class StorageDetailFragment : Fragment() {
                 Log.d("getCarrierInfo :", "Error 2")
             }
         })
+    }
+
+    // 티켓 기록 존재 여부 조회 API
+    private fun getTicketExist(accessToken : String, carrierId : String, ticketId : String) {
+        // Bearer 추가
+        val bearerToken = "Bearer $accessToken"
+        retAPIS.getTicketExist(bearerToken, carrierId, ticketId).enqueue(object : Callback<ResponseTicketExist> {
+            override fun onResponse(call: Call<ResponseTicketExist>, response: Response<ResponseTicketExist>) {
+                if (response.isSuccessful) { // 이미 리뷰를 작성했을 경우
+                    Log.d( "ResponseTicketExist :",  "리뷰")
+                    // 리뷰 수정 페이지로 이동
+                    goReviewEdit()
+                } else {
+                    Log.d("ResponseTicketExist :", "작성된 리뷰 없음")
+                    // 리뷰 작성 페이지로 이동
+                    goReview()
+                }
+            } override fun onFailure(call: Call<ResponseTicketExist>, t: Throwable) {
+                Log.d("ResponseTicketExist :", "Error 2")
+            }
+        })
+    }
+
+    // 리뷰 작성 전 > 리뷰 작성 페이지로 이동
+    private fun goReview() {
+        val reviewFragment = ReviewFragment()
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.constraint_layout, reviewFragment)
+            addToBackStack(null)
+            commit()
+        }
+    }
+
+    // 리뷰 작성 후 > 리뷰 수정 페이지로 이동
+    private fun goReviewEdit() {
+        val reviewEditFragment = ReviewEditFragment()
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.constraint_layout, reviewEditFragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 }

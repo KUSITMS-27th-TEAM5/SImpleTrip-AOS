@@ -13,12 +13,15 @@ import com.kusitms.ovengers.data.ResponseNewToken
 import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.data.ResponseStorageCarrier
+import com.kusitms.ovengers.data.ResponseTicketExist
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface APIS {
@@ -87,5 +90,13 @@ interface APIS {
         @Header("Authorization") Authorization: String,
         @Query("id") id : String
     ) : Call<ResponseGetTicket>
+
+    // 보관함 | 티켓 선택 > 티켓 기록 존재 여부 조회 | 유정
+    @GET("/v1/ticket/memo/checkExist/{carrierId}")
+    fun getTicketExist(
+        @Header("Authorization") Authorization: String,
+        @Path("carrierId") carrierId : String,
+        @Query("id") id : String,
+    ) : Call<ResponseTicketExist>
 
 }
