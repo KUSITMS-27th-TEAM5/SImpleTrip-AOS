@@ -107,32 +107,35 @@ class Mypage : Fragment() {
 
         }
 
-        // next01 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
+        // next01 이미지뷰를 클릭하면 다음 프래그먼트로 전환
         val imageView1 = view.findViewById<ImageView>(R.id.next01)
         imageView1.setOnClickListener {
+            Log.d("next01 pushed", "다음버튼1 눌림")
             val fragment = NotDeveloped()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.replace(R.id.mypage, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
-        // next02 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
+        // next02 이미지뷰를 클릭하면 다음 프래그먼트로 전환
         val imageView2 = view.findViewById<ImageView>(R.id.next02)
         imageView2.setOnClickListener {
+            Log.d("next02 pushed", "다음버튼2 눌림")
             val fragment = NotDeveloped()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.replace(R.id.mypage, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
-        // next01 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
+        // next03 이미지뷰를 클릭하면 다음 프래그먼트로 전환
         val imageView3 = view.findViewById<ImageView>(R.id.next03)
         imageView3.setOnClickListener {
+            Log.d("next03 pushed", "다음버튼3 눌림")
             val fragment = NotDeveloped()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.replace(R.id.mypage, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -145,8 +148,15 @@ class Mypage : Fragment() {
 
 
         // xml에 있는 연필 버튼 누르면 닉네임 수정 함수 실행
-//        val editNickname = view.findViewById<ImageView>(R.id.editBtn)
-//        editNickname.setOnClickListener { nicknameChange() }
+        val editbutton = view.findViewById<ImageView>(R.id.editBtn)
+        editbutton.setOnClickListener {
+            Log.d("editbutton pushed", "닉네임 수정 버튼 눌림")
+            val fragment = NotDeveloped()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.mypage, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
         // xml에 있는 로그아웃 텍스트 누르면 로그아웃 함수 실행
