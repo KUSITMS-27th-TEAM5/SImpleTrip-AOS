@@ -1,4 +1,5 @@
 # 🧞트립지니(TripGenie)🧞
+
 <img width="1920" alt="디자인 컨셉 (1)" src="https://github.com/KUSITMS-27th-TEAM5/TripGenie-AOS/assets/108562467/4273f848-8262-4e20-8b9e-fd98fedca1e0">
 
 ### 여행 티켓을 한 곳에 모아 관리해주는 프로여행러들의 필수 메이트 TripGenie
@@ -34,3 +35,6 @@ https://github.com/KUSITMS-27th-TEAM5/TripGenie-APK/tree/main
   
 ## ✨ERD 설계도
 ![image (1)](https://github.com/KUSITMS-27th-TEAM5/TripGenie-AOS/assets/108562467/86daf267-0263-4596-af0c-d78ceb2f2f2e)
+=======
+![Slide 16_9 - 1 (4)](https://user-images.githubusercontent.com/108562467/232030862-d151776a-1624-4d36-870f-9ab39ad654fe.png)
+ 
