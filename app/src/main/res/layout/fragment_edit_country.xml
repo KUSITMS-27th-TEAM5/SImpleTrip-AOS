@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Step 2  어디로 여행을 떠나시나요?"
+        android:fontFamily="@font/pretendard_bold"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#444444"
@@ -37,6 +38,7 @@
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:text="국내"
+            android:fontFamily="@font/pretendard_bold"
             android:gravity="center"
             android:layout_weight="1"/>
         <TextView
@@ -45,6 +47,7 @@
             android:layout_height="match_parent"
             android:textColor="#000000"
             android:text="해외"
+            android:fontFamily="@font/pretendard_bold"
             android:gravity="center"
             android:layout_weight="1"/>
 
@@ -60,10 +63,11 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/border"
+        android:fontFamily="@font/pretendard_bold"
         android:text="수정 완료" />
 
 
