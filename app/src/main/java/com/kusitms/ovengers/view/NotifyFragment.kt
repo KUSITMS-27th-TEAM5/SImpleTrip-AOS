@@ -57,9 +57,10 @@ class NotifyFragment : Fragment() {
         binding.btnBack.setOnClickListener{
             val storageFragment = StorageFragment()
             fragmentManager?.beginTransaction()?.apply {
-                replace(R.id.constraint_layout, storageFragment)
-                addToBackStack(null)
-                commit()
+//                replace(R.id.constraint_layout, storageFragment)
+//                addToBackStack(null)
+//                commit()
+                remove(this@NotifyFragment).commit()
             }
         }
 
