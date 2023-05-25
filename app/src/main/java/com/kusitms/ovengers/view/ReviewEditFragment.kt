@@ -10,14 +10,20 @@ import com.bumptech.glide.Glide
 import com.kusitms.ovengers.MyApplication
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.data.ResponseGetMemo
+import com.kusitms.ovengers.data.ResponsePostMemo
 import com.kusitms.ovengers.data.ResponseTicketExist
 import com.kusitms.ovengers.databinding.FragmentNotifyBinding
 import com.kusitms.ovengers.databinding.FragmentReviewEditBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class ReviewEditFragment : Fragment() {
 
@@ -66,13 +72,18 @@ class ReviewEditFragment : Fragment() {
             }
         }
 
-        // 티켓 기록 조회 API 호출
+        // 티켓 삭제 버튼
+        binding.btnEdit.setOnClickListener {
+            deleteMemo(accessToken, carrierId, ticketId)
+        }
+
+        // 티켓 조회 API 호출
         getMemo(accessToken, carrierId, ticketId)
 
         return binding.root
     }
 
-    // 티켓 기록 존재 여부 조회 API
+    // 티켓 조회 API
     private fun getMemo(accessToken : String, carrierId : String, ticketId : String) {
         // Bearer 추가
         val bearerToken = "Bearer $accessToken"
@@ -84,7 +95,7 @@ class ReviewEditFragment : Fragment() {
                     val text = response.body()?.data?.content.toString()
 
                     // 이미지 설정
-                    context?.let { Glide.with(it).load(url).error(R.drawable.bg_store_detail_ex).into(binding.img) }
+                    context?.let { Glide.with(it).load(url).error(R.drawable.bg_store_detail_ex).into(binding.img)}
 
                     // 텍스트 설정
                     binding.text.setText(text)
@@ -96,6 +107,37 @@ class ReviewEditFragment : Fragment() {
                 Log.d("ResponseGetMemo :", "Error 2")
             }
         })
+    }
+
+    // 티켓 삭제 API
+    private fun deleteMemo(accessToken : String, carrierId : String, ticketId : String) {
+        // Bearer 추가
+        val bearerToken = "Bearer $accessToken"
+        retAPIS.deleteMemo(bearerToken, carrierId, ticketId).enqueue(object : Callback<ResponseGetMemo> {
+            override fun onResponse(call: Call<ResponseGetMemo>, response: Response<ResponseGetMemo>) {
+                if (response.isSuccessful) {
+                    Log.d( "ResponseDeleteMemo :",  "Success")
+                    Log.d("ResponseDeleteMemo :", response.message().toString())
+
+                    goStorageDetail()
+
+                } else {
+                    Log.d("ResponseGetMemo :", "Error 1")
+                }
+            } override fun onFailure(call: Call<ResponseGetMemo>, t: Throwable) {
+                Log.d("ResponseGetMemo :", "Error 2")
+            }
+        })
+    }
+
+    // 리뷰 작성 전 > 리뷰 작성 페이지로 이동
+    private fun goStorageDetail() {
+        val storageDetail = StorageDetailFragment()
+        fragmentManager?.beginTransaction()?.apply {
+            replace(R.id.constraint_layout, storageDetail)
+            addToBackStack(null)
+            commit()
+        }
     }
 
 }

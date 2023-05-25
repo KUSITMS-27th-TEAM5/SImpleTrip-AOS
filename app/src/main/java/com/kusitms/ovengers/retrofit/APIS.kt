@@ -2,7 +2,6 @@ package com.kusitms.ovengers.retrofit
 
 import com.kusitms.ovengers.data.PointRequestBody
 import com.kusitms.ovengers.data.RequestMakeCarrier
-import com.kusitms.ovengers.data.RequestMemoDto
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseCarrierInfo
@@ -17,10 +16,11 @@ import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.data.ResponseStorageCarrier
 import com.kusitms.ovengers.data.ResponseTicketExist
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.Field
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
@@ -30,6 +30,7 @@ import retrofit2.http.Part
 import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
+
 
 interface APIS {
 
@@ -114,5 +115,21 @@ interface APIS {
         @Query("id") id : String,
     ): Call<ResponseGetMemo>
 
+    // 보관함 | 티켓 선택 > 기록 X > 작성 | 유정
+    @Multipart
+    @POST("/v1/ticket/memo")
+    fun postMemo(
+        @Header("Authorization") Authorization: String,
+        @Part file: MultipartBody.Part,
+        @PartMap dto: MutableMap<String, RequestBody>
+    ): Call<ResponsePostMemo>
+
+    // 보관함 | 티켓 기록 삭제 | 유정
+    @DELETE("/v1/ticket/memo/{carrierId}")
+    fun deleteMemo(
+        @Header("Authorization") Authorization: String,
+        @Path("carrierId") carrierId : String,
+        @Query("id") id : String,
+    ): Call<ResponseGetMemo>
 
 }
