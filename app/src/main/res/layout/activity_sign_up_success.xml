@@ -52,6 +52,7 @@
             android:layout_height="47dp"
             android:background="@drawable/border"
             android:text="트립지니 시작하기"
+            android:fontFamily="@font/pretendard_medium"
             android:layout_marginRight="21dp"
             android:layout_marginLeft="21dp"
             app:layout_constraintBottom_toBottomOf="parent"

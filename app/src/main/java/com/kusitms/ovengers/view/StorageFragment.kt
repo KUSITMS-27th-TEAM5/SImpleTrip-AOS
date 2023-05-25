@@ -74,7 +74,8 @@ class StorageFragment : Fragment() {
         }
 
         // 유저 이름 설정
-        binding.username.text = username
+        // binding.username.text = username
+        binding.username.text = "전종투"
 
         // View Model
         viewModel = ViewModelProvider(this).get(StorageViewModel::class.java)
