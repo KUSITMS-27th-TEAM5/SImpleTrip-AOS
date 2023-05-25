@@ -38,6 +38,7 @@ import com.kusitms.ovengers.databinding.FragmentMypageBinding
 import com.kusitms.ovengers.databinding.FragmentStoreDetailBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
+import com.kusitms.ovengers.view.NotDeveloped
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -95,26 +96,45 @@ class Mypage : Fragment() {
         // beforeBtn을 누르면 이전 화면으로 돌아가게 설정 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
         val beforeBtn = view.findViewById<ImageView>(R.id.beforeBtn)
         beforeBtn.setOnClickListener {
-            findNavController().navigateUp()
             Log.d("beforebtn pushed", "이전 화면 눌림")
+
+            val fragmentManager = requireActivity().supportFragmentManager
+            if (fragmentManager.backStackEntryCount > 0) {
+                fragmentManager.popBackStack()
+            } else {
+                requireActivity().finish()
+            }
+
         }
 
         // next01 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
-        val imageView01 = view.findViewById<ImageView>(R.id.next01)
-        imageView01.setOnClickListener {
-//            findNavController().navigate(R.id.action_mypage_to_notdeveloped~)
+        val imageView1 = view.findViewById<ImageView>(R.id.next01)
+        imageView1.setOnClickListener {
+            val fragment = NotDeveloped()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         // next02 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
-        val imageView02 = view.findViewById<ImageView>(R.id.next02)
-        imageView02.setOnClickListener {
-//            findNavController().navigate(R.id.action_mypage_to_notdeveloped~)
+        val imageView2 = view.findViewById<ImageView>(R.id.next02)
+        imageView2.setOnClickListener {
+            val fragment = NotDeveloped()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         // next01 이미지뷰를 클릭하면 다음 프래그먼트로 전환 -> 아마 navigation xml 파일에서 프래그먼트 액션 대상 설정 필요
-        val imageView03 = view.findViewById<ImageView>(R.id.next03)
-        imageView03.setOnClickListener {
-//            findNavController().navigate(R.id.action_mypage_to_notdeveloped~)
+        val imageView3 = view.findViewById<ImageView>(R.id.next03)
+        imageView3.setOnClickListener {
+            val fragment = NotDeveloped()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.constraint_layout, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
 
@@ -125,8 +145,8 @@ class Mypage : Fragment() {
 
 
         // xml에 있는 연필 버튼 누르면 닉네임 수정 함수 실행
-        val editNickname = view.findViewById<ImageView>(R.id.editBtn)
-        editNickname.setOnClickListener { nicknameChange() }
+//        val editNickname = view.findViewById<ImageView>(R.id.editBtn)
+//        editNickname.setOnClickListener { nicknameChange() }
 
 
         // xml에 있는 로그아웃 텍스트 누르면 로그아웃 함수 실행
@@ -135,12 +155,6 @@ class Mypage : Fragment() {
         Log.d("Logoutbtn pushed", "로그아웃 텍스트 눌림")
     }
 
-
-
-    //닉네임 수정하는 함수
-    private fun nicknameChange() {
-        TODO("Not yet implemented")
-    }
 
 
 
@@ -239,8 +253,4 @@ class Mypage : Fragment() {
 
 
 
-
 }
-
-
-

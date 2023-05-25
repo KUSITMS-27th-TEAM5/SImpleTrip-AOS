@@ -141,7 +141,6 @@ class StoreDetailFragment : Fragment() {
                     val point = response.body()?.data
                     Log.d("Set Point Response Message : ", response.message())
                     Log.d("Set Point Result : ", point.toString())
-
                 } else {
                     if (code == "-5001") { // 토큰 만료
                         newToken(bearerToken) // 토큰 재발급 함수 호출
