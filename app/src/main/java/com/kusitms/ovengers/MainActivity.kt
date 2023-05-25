@@ -119,7 +119,11 @@ class MainActivity : AppCompatActivity() {
                     Log.d("AccessToken Response : ", accessToken)
                     Log.d("AccessToken refreshToken : ", refreshToken)
 
-                    move(accessToken, email, userName)
+                    var code = response.body()?.code
+
+                    Log.d("Code! : ", code.toString())
+
+
                 } else {
                     Log.d("Oauth Login Response : ", "Fail 1")
                 }
@@ -140,6 +144,20 @@ class MainActivity : AppCompatActivity() {
 //        intent.putExtra("email", email)
 //        intent.putExtra("userName", userName)
 
+        finish()
+        startActivity(intent)
+    }
+
+    private fun moveOnBording(accessToken : String, email : String, userName : String){
+        // sharedPreference에 accessToken,email,userName 저장
+        MyApplication.prefs.setString("accessToken", accessToken)
+        MyApplication.prefs.setString("email",email)
+        MyApplication.prefs.setString("userName",userName)
+
+        // 엑티비티 전환, intent -> email, userName
+        val intent = Intent(this, BoardingActivity_1::class.java)
+//        intent.putExtra("email", email)
+//        intent.putExtra("userName", userName)
         finish()
         startActivity(intent)
     }

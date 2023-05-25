@@ -32,7 +32,7 @@
             android:layout_marginEnd="17dp"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/pretendard_bold"
-            android:text=""
+            android:text="2022-05-25"
             android:textColor="@color/main_purple"
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
