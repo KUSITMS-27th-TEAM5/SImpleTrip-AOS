@@ -17,7 +17,7 @@
         android:src="@drawable/btn_mypage_before"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
+ㄷ
     <ImageView
         android:id="@+id/diamond"
         android:layout_width="225dp"
@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="235dp"/>
+        android:layout_marginTop="210dp"/>
 
 
     <TextView

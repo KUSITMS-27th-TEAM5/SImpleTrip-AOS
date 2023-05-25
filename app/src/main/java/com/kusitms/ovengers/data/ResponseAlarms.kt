@@ -15,5 +15,6 @@ data class AlarmCode(
 
 data class AlarmData(
     val id: Int,
-    val message: String
+    val message: String,
+    val createdDate : String
 )
