@@ -1,10 +1,12 @@
 package com.kusitms.ovengers
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.transaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -19,7 +21,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var chooseDateFragment: ChooseDateFragment
     private lateinit var chooseDestinationFragment: ChooseDestinationFragment
     private lateinit var createNameFragment: CreateNameFragment
-    private lateinit var editCarrierNameFragment: EditCarrierNameFragment
 
     private val TAG = HomeActivity::class.java.simpleName
 
@@ -36,27 +37,50 @@ class HomeActivity : AppCompatActivity() {
 
 
         // 바텀 네비게이션 아이템 클릭 리스터 설정
-        val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener{
+        val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
             val ap = true
+
+            val fab = findViewById<FloatingActionButton>(R.id.fab)
+            fab.setOnClickListener {
+                // HomeFragment로 전환
+                val homeFragment = HomeFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.Main_Frame, homeFragment)
+                    .commit()
+            }
+
+
             when (it.itemId) {
+
                 R.id.navigation_store -> {
                     storeFragment = StoreFragment().newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, storeFragment).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.Main_Frame, storeFragment).commit()
 
-                    Log.d("Nav : ","Store Fragment")
+                    Log.d("Nav : ", "Store Fragment")
                 }
+
+//                R.id.fab -> {
+//                    homeFragment = HomeFragment().newInstance()
+//                    supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
+//                    Log.d("Nav : ","Home Fragment")
+//
+//                }
+
                 R.id.navigation_home -> {
                     homeFragment = HomeFragment().newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
                     Log.d("Nav : ","Home Fragment")
 
                 }
+
+
                 R.id.navigation_storage -> {
                     storageFragment = StorageFragment().newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, storageFragment).commit()
                     Log.d("Nav : ","Storage Fragment")
-
                 }
+
             }
             true
         }
@@ -121,6 +145,5 @@ class HomeActivity : AppCompatActivity() {
     fun carrierMakeSuccess() {
         homeFragment = HomeFragment().newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
-        HideBottomNav(false)
     }
-} // 커밋용
+}
