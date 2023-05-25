@@ -36,12 +36,15 @@ class NotifyAdapter (
 
 class NotifyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     private val text : TextView = view.findViewById<TextView>(R.id.text)
+    private val date : TextView = view.findViewById<TextView>(R.id.date)
 
     fun bind(task: AlarmData, clickListener: (AlarmData) -> Unit) {
         var message = task.message
         message = message.replace("₩n", "\n")
 
         text.text = message.toString()
+        date.text = task.createdDate.toString()
+
 
         view.setOnClickListener {
             clickListener(task)
