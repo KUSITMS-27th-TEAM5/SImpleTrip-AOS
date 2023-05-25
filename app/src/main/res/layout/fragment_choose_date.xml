@@ -15,6 +15,16 @@
         android:layout_marginLeft="12dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/ic_back_button"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step 1  언제 여행을 떠나시나요?"
+        android:textSize="20sp"
+        android:fontFamily="@font/pretendard_bold"
+        android:textStyle="bold"
+        android:textColor="#444444"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="15dp"/>
 
 
     <TextView
@@ -22,9 +32,10 @@
         android:layout_height="wrap_content"
         android:text="여행 날짜"
         android:textSize="16sp"
+        android:fontFamily="@font/pretendard_bold"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="22dp"
         android:layout_marginLeft="23dp"/>
 
     <LinearLayout
@@ -81,6 +92,7 @@
         android:layout_marginRight="25dp"
         android:layout_height="47dp"
         android:layout_gravity="center"
+        android:fontFamily="@font/pretendard_bold"
         android:background="@drawable/border"
         android:text="다음"/>
 

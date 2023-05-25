@@ -84,6 +84,8 @@ class EditCountryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val id = requireArguments().getInt("id")
+        Log.d("id_country",id.toString())
 
         binding.textKorea.setOnClickListener{
             binding.textKorea.setBackgroundResource(R.drawable.border_underline)
@@ -156,7 +158,7 @@ class EditCountryFragment : Fragment() {
                 MyApplication.prefs.setString("destination", destination)
             }
 
-            editCarrierCountry(1,destination)
+            editCarrierCountry(id,destination)
 
             //뒤로가기
             requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
