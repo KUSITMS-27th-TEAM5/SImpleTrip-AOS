@@ -5,7 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NotDeveloped">
+    tools:context=".view.NotDeveloped"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/beforeBtn"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/btn_mypage_before"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/diamond"

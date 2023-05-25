@@ -121,7 +121,7 @@ interface APIS {
     fun postMemo(
         @Header("Authorization") Authorization: String,
         @Part file: MultipartBody.Part,
-        @PartMap dto: MutableMap<String, RequestBody>
+        @Part("dto") dto: RequestBody
     ): Call<ResponsePostMemo>
 
     // 보관함 | 티켓 기록 삭제 | 유정

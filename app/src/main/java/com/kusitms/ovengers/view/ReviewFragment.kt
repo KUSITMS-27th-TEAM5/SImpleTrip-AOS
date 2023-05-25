@@ -86,7 +86,7 @@ class ReviewFragment : Fragment() {
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                postMemo(accessToken, carrierId, ticketId, text)
+                //postMemo(accessToken, carrierId, ticketId, text)
             } else {
                 ActivityCompat.requestPermissions(
                     requireActivity(),
@@ -96,6 +96,7 @@ class ReviewFragment : Fragment() {
             }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -131,6 +132,8 @@ class ReviewFragment : Fragment() {
         startActivityForResult(intent, REQ_GALLERY)
     }
 
+    /*
+
     private fun postMemo(accessToken: String, carrierId: String, ticketId: String, text: String) {
         val bearerToken = "Bearer $accessToken"
 
@@ -147,7 +150,7 @@ class ReviewFragment : Fragment() {
         val requestFile: RequestBody = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
         val part: MultipartBody.Part = MultipartBody.Part.createFormData("image", imageFile.name, requestFile)
 
-        retAPIS.postMemo(bearerToken, part, map).enqueue(object : Callback<ResponsePostMemo> {
+        retAPIS.postMemo(bearerToken, part, RequestBody(carrierId, text, ticketId)).enqueue(object : Callback<ResponsePostMemo> {
             override fun onResponse(call: Call<ResponsePostMemo>, response: Response<ResponsePostMemo>) {
                 if (response.isSuccessful) {
                     Log.d("ResponsePostMemo: ", "Success")
@@ -162,5 +165,7 @@ class ReviewFragment : Fragment() {
             }
         })
     }
+    */
+     */
 
 }
