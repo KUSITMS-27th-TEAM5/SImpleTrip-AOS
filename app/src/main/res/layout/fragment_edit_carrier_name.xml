@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:text="Step 3  캐리어 이름을 설정해주세요!"
         android:textSize="20sp"
+        android:fontFamily="@font/pretendard_bold"
         android:textStyle="bold"
         android:textColor="#444444"
         android:layout_marginLeft="28dp"
@@ -41,6 +42,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendard_bold"
         android:hint="캐리어 이름을 지어주세요!"
         android:privateImeOptions="defaultInputmode=korean"
         android:background="@drawable/border"
@@ -51,9 +53,10 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="85dp"
+        android:fontFamily="@font/pretendard_bold"
         android:background="@drawable/border"
         android:text="수정 완료" />
 
