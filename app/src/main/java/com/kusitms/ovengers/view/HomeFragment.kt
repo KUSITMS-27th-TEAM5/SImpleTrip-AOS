@@ -55,6 +55,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val hActivity = activity as HomeActivity
+        hActivity.HideBottomNav(false)
+        val nickname = MyApplication.prefs.getString("nickName","String")
+
+//        binding.carrierWho.setText("${nickname} 님의 티켓 캐리어")
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 //        retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 //        getCarrier()
@@ -87,6 +92,9 @@ class HomeFragment : Fragment() {
 
                     val intent = Intent(activity,CarrierInfoActivity::class.java)
 
+                    intent.putExtra("id",carrierList[position].id)
+
+
                     startActivity(intent)
 
 
@@ -94,23 +102,43 @@ class HomeFragment : Fragment() {
                 }
             }
 
+
             //길게 클릭 시 편집 목록
             carrierAdapter.itemLongClick = object :CarrierAdapter.ItemLongClick{
                 override fun onLongClick(view: View, position: Int) {
                     // Toast.makeText(context,"long",Toast.LENGTH_SHORT).show()
 
+                    val mActivity = activity as HomeActivity
+
                     var pop = PopupMenu(context,view)
                     pop.menuInflater.inflate(R.menu.carrier_popup,pop.menu)
 
                     pop.setOnMenuItemClickListener { item ->
-                        when(item.itemId) {
+                        val editCarrierNameFragment =  EditCarrierNameFragment()
+                        val editDateFragment = EditDateFragment()
+                        val editCountryFragment = EditCountryFragment()
+                        val bundle = Bundle()
 
+                        when(item.itemId) {
                             R.id.popup_country->
-                                Toast.makeText(context,"country",Toast.LENGTH_SHORT).show()
+
+                                fragmentManager?.beginTransaction()?.apply {
+                                    replace(R.id.Main_Frame, editCountryFragment)
+                                    addToBackStack(null)
+                                    commit()
+                                }
                             R.id.popup_date->
-                                Toast.makeText(context,"date",Toast.LENGTH_SHORT).show()
+                                fragmentManager?.beginTransaction()?.apply {
+                                    replace(R.id.Main_Frame, editDateFragment)
+                                    addToBackStack(null)
+                                    commit()
+                                }
                             R.id.popup_carrier_name->
-                                Toast.makeText(context,"name",Toast.LENGTH_SHORT).show()
+                                fragmentManager?.beginTransaction()?.apply {
+                                    replace(R.id.Main_Frame, editCarrierNameFragment)
+                                    addToBackStack(null)
+                                    commit()
+                                }
                             R.id.popup_delete_carrier->
                                 deleteCarrier(carrierList[position].name)
                             R.id.popup_cancle->
@@ -134,52 +162,14 @@ class HomeFragment : Fragment() {
         val view = binding.root
         return view
 
-
-
-//
     }
 
 
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//
-//
-//        val name = MyApplication.prefs.getString("userName","String")
-//
-//
-//
-//        binding.carrierWho.setText("${name} 님의 티켓 캐리어")
-//
-//
-////        getCarrier()
-//
-////        carrierData.add(Ddata(100,"dd"))
-//
-//
-//
-//
-////
-////            Log.d("carrierdata",carrierData.toString())
-////            carrierAdapter = CarrierAdapter(carrierData)
-////
-////            binding.carrierRv.adapter = carrierAdapter
-////            binding.carrierRv.layoutManager = GridLayoutManager(context,2)
-//
-//
-//
-
-
-//
-
-//
-//
-//
-//    }
 
 
 
+    //캐리어삭제 API
     private fun deleteCarrier(name : String){
         val bearerToken = "Bearer $accessToken"
         retAPIS.deleteCarrier(bearerToken, RequestDeleteCarrier(name)).enqueue(object : Callback<ResponseDeleteCarrier> {

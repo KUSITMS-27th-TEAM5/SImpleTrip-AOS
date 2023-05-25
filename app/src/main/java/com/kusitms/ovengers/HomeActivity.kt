@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var chooseDateFragment: ChooseDateFragment
     private lateinit var chooseDestinationFragment: ChooseDestinationFragment
     private lateinit var createNameFragment: CreateNameFragment
+    private lateinit var editCarrierNameFragment: EditCarrierNameFragment
 
     private val TAG = HomeActivity::class.java.simpleName
 

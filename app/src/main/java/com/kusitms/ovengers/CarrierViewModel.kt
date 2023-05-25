@@ -37,7 +37,7 @@ class CarrierViewModel : ViewModel() {
         val bearerToken = "Bearer $accessToken"
         viewModelScope.launch {
             try {
-                retAPIS.getCarrier(bearerToken).enqueue(object : Callback<ResponseGetCarrier> {
+                retAPIS.getCarrierList(bearerToken).enqueue(object : Callback<ResponseGetCarrier> {
             override fun onResponse(call: Call<ResponseGetCarrier>, response: Response<ResponseGetCarrier>) {
                 if (response.isSuccessful) {
 

@@ -102,14 +102,49 @@ interface APIS {
         @Query("id") id : String,
     ) : Call<ResponseTicketExist>
 
+    //캐리어 이름 변경 ㅣ 승균
+    @PUT("/v1/myCarrier/editCarrierName")
+    fun editCarrierName(
+        @Header("Authorization") Authorization: String,
+        @Body RequestEditCarrierName: RequestEditCarrierName
+    ) : Call<ResponseEditCarrierName>
+
+    //캐리어 날짜 변경 ㅣ 승균
+    @PUT("/v1/myCarrier/editCarrierPeriod")
+    fun editCarrierPeriod(
+        @Header("Authorization") Authorization: String,
+        @Body RequestEditCarrierPeriod: RequestEditCarrierPeriod
+    ) : Call<ResponseEditCarrierPeriod>
+
+    //캐리어 국가 변경 ㅣ 승균
+    @PUT("/v1/myCarrier/editCarrierCountry")
+    fun editCarrierCountry(
+        @Header("Authorization") Authorization: String,
+        @Body RequestEditCarrierCountry: RequestEditCarrierCountry
+    ) : Call<ResponseEditCarrierCountry>
+
+
+    //캐리어 삭제하기 ㅣ 승균
+    @PUT("/v1/myCarrier/deleteCarrier")
+    fun deleteCarrier(
+        @Header("Authorization") Authorization: String,
+        @Body RequestDeleteCarrier: RequestDeleteCarrier
+    ) : Call<ResponseDeleteCarrier>
+
 
     //캐리어 가져오기 ㅣ 승균
     @GET("/v1/myCarrier/selectAll")
-    fun getCarrier(
+    fun getCarrierList(
         @Header("Authorization") Authorization: String
     ) : Call<ResponseGetCarrier>
 
 
+    //링크 업로드 ㅣ 승균
+    @POST("/v1/myCarrier/addTicket/url")
+    fun postLinkUrl(
+        @Header("Authorization") Authorization: String,
+        @Body RequestPostLinkUrl : RequestPostLinkUrl
+    ) : Call<ResponsePostLinkUrl>
 
 
 }

@@ -8,22 +8,37 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kusitms.ovengers.data.TicketData
 import com.kusitms.ovengers.data.carrierMoreInfo
 
-class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) : RecyclerView.Adapter<CarrierMoreInfoAdapter.ViewHolder>(){
+class CarrierMoreInfoAdapter (
+    private val ticketList: MutableList<TicketData> = mutableListOf(),
+
+    ) : RecyclerView.Adapter<CarrierMoreInfoAdapter.ViewHolder>(){
+
+    fun updateList(newList: List<TicketData>) {
+        ticketList.clear()
+        ticketList.addAll(newList)
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.carrierinfo_rv_item,parent,false)
         return ViewHolder(view)
     }
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        var destinationImg : ImageView
-        var ticketName : TextView
+//        var destinationImg : ImageView = view.findViewById(R.id.img_ticket)
+       private var ticketName : TextView = view.findViewById(R.id.ticketName)
 
-        init{
-            destinationImg = view.findViewById(R.id.img_ticket)
-            ticketName = view.findViewById(R.id.ticketName)
+        fun bind(task : TicketData) {
+            ticketName.text = task.title
+//            destinationImg.setImageResource(task.)
         }
+
+//        init{
+//            destinationImg = view.findViewById(R.id.img_ticket)
+//            ticketName = view.findViewById(R.id.ticketName)
+//        }
 
     }
     interface ItemClick {
@@ -37,8 +52,12 @@ class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) 
     var itemLongClick : CarrierAdapter.ItemLongClick?=null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.destinationImg.setImageResource(dataSet[position].img)
-        holder.ticketName.setText("티켓 이름을 입력해주세요")
+//        holder.destinationImg.setImageResource(dataSet[position].img)
+//        holder.ticketName.setText("티켓 이름을 입력해주세요")
+
+        val ticketList = ticketList[position]
+        holder.bind(ticketList)
+
         if(itemClick != null) {
             holder?.itemView!!.setOnClickListener{v ->
                 itemClick!!.onClick(v,position)
@@ -54,7 +73,7 @@ class CarrierMoreInfoAdapter (private val dataSet : ArrayList<carrierMoreInfo>) 
     }
 
     override fun getItemCount(): Int {
-        return dataSet.size
+        return ticketList.size
     }
 
 

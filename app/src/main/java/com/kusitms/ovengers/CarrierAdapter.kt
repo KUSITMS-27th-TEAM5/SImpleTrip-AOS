@@ -49,7 +49,7 @@ class CarrierAdapter(
        val carrierList = carrierList[position]
         holder.bind(carrierList)
 
-//        holder.carrierName.text = carrierList[position].name
+
 
         if(itemClick != null) {
             holder?.itemView!!.setOnClickListener{v ->
