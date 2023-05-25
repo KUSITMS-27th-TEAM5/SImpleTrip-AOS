@@ -123,6 +123,16 @@ class MainActivity : AppCompatActivity() {
 
                     Log.d("Code! : ", code.toString())
 
+                    if (code == -1000) {
+                        moveOnBording(accessToken, email, userName)
+                    } else if (code == -1001) {
+                        move(accessToken, email, userName)
+                    } else if (code == -1002) {
+                        move(accessToken, email, userName)
+                    } else {
+                        Log.d("code -1009", "유효하지 않은 구글 액세스 토큰입니다.")
+                    }
+
 
                 } else {
                     Log.d("Oauth Login Response : ", "Fail 1")
