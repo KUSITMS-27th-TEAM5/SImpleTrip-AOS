@@ -38,7 +38,7 @@ class NotifyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     private val text : TextView = view.findViewById<TextView>(R.id.text)
 
     fun bind(task: AlarmData, clickListener: (AlarmData) -> Unit) {
-        text.text = task.message
+
 
         view.setOnClickListener {
             clickListener(task)

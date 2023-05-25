@@ -32,19 +32,6 @@
                 tools:ignore="SpeakableTextPresentCheck"/>
 
 
-            <ImageButton
-                android:id="@+id/button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="10dp"
-                android:background="@android:color/transparent"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_storage_dot"
-                tools:ignore="SpeakableTextPresentCheck" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

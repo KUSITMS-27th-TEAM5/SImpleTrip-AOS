@@ -193,21 +193,6 @@ class LoginMoreInfo : AppCompatActivity(){
         binding.ImgUser.setImageResource(R.drawable.ic_profile_default)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(resultCode == RESULT_OK) {
-            when(requestCode) {
-                REQ_GALLERY -> {
-                    data?.data?.let {uri ->
-                        binding.ImgUser.setImageURI(uri)
-
-                    }
-                }
-            }
-        }
-
-    }
 
     private fun moveToHome () {
         nickName = binding.editTextNickname.text.toString()
