@@ -8,8 +8,9 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_nav_home_checked"
-        android:title="홈" />
+        android:title=""/>
+    <!--        android:icon="@drawable/ic_nav_home_checked"-->
+    <!--        android:title="홈" />-->
 
     <item
         android:id="@+id/navigation_storage"

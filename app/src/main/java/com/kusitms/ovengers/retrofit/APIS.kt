@@ -8,24 +8,32 @@ import com.kusitms.ovengers.data.RequestMakeCarrier
 import com.kusitms.ovengers.data.RequestSignUp
 import com.kusitms.ovengers.data.ResponseAlarms
 import com.kusitms.ovengers.data.ResponseCarrierInfo
+import com.kusitms.ovengers.data.ResponseGetMemo
 import com.kusitms.ovengers.data.ResponseGetPoint
 import com.kusitms.ovengers.data.ResponseGetTicket
 import com.kusitms.ovengers.data.ResponseGoogleSignup
 import com.kusitms.ovengers.data.ResponseMakeCarrier
 import com.kusitms.ovengers.data.ResponseNewToken
+import com.kusitms.ovengers.data.ResponsePostMemo
 import com.kusitms.ovengers.data.ResponseSetPoint
 import com.kusitms.ovengers.data.ResponseSignUp
 import com.kusitms.ovengers.data.ResponseStorageCarrier
 import com.kusitms.ovengers.data.ResponseTicketExist
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.Field
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
+import retrofit2.http.PartMap
 import retrofit2.http.Path
 import retrofit2.http.Query
+
 
 interface APIS {
 
@@ -145,6 +153,31 @@ interface APIS {
         @Header("Authorization") Authorization: String,
         @Body RequestPostLinkUrl : RequestPostLinkUrl
     ) : Call<ResponsePostLinkUrl>
+
+    // 보관함 | 티켓 선택 > 기록 O > 조회 | 유정
+    @GET("/v1/ticket/memo/{carrierId}")
+    fun getMemo(
+        @Header("Authorization") Authorization: String,
+        @Path("carrierId") carrierId : String,
+        @Query("id") id : String,
+    ): Call<ResponseGetMemo>
+
+    // 보관함 | 티켓 선택 > 기록 X > 작성 | 유정
+    @Multipart
+    @POST("/v1/ticket/memo")
+    fun postMemo(
+        @Header("Authorization") Authorization: String,
+        @Part file: MultipartBody.Part,
+        @Part("dto") dto: RequestBody
+    ): Call<ResponsePostMemo>
+
+    // 보관함 | 티켓 기록 삭제 | 유정
+    @DELETE("/v1/ticket/memo/{carrierId}")
+    fun deleteMemo(
+        @Header("Authorization") Authorization: String,
+        @Path("carrierId") carrierId : String,
+        @Query("id") id : String,
+    ): Call<ResponseGetMemo>
 
 
 }

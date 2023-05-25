@@ -81,6 +81,7 @@ class StorageDetailFragment : Fragment() {
             Log.d("StorageDetailFragment", "Clicked Ticket Id: ${task.id}")
             var ticketId = task.id.toString()
             MyApplication.prefs.setString("ticketId", ticketId)
+            MyApplication.prefs.setString("ticketTitle", task.title)
             var carrierId = MyApplication.prefs.getString("carrierId", "1")
 
             getTicketExist(accessToken, carrierId, ticketId)
