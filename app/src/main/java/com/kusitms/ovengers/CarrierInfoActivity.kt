@@ -56,7 +56,7 @@ class CarrierInfoActivity : AppCompatActivity() {
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
         val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
 
-        var carrierId = MyApplication.prefs.getString("carrierId", "1")
+        //var carrierId = MyApplication.prefs.getString("carrierId", "1")
 
         binding.btnBack.setOnClickListener{
 
@@ -94,28 +94,26 @@ class CarrierInfoActivity : AppCompatActivity() {
                 }
             }
 
+
+            binding.fabMain.setOnClickListener {
+                fab()
+            }
+
+            binding.fabLink.setOnClickListener {
+                Toast.makeText(this,"fablink",Toast.LENGTH_SHORT).show()
+                setLink()
+            }
+            binding.fabFile.setOnClickListener {
+                Toast.makeText(this,"fabfile",Toast.LENGTH_SHORT).show()
+            }
+            binding.fabPhoto.setOnClickListener {
+                Toast.makeText(this,"fabphoto",Toast.LENGTH_SHORT).show()
+                openGallery()
+
+            }
+
         })
-//        carrierMoreInfoAdapter = CarrierMoreInfoAdapter(dataSet)
-//        binding.ticketRv.adapter = carrierMoreInfoAdapter
-//        binding.ticketRv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
 
-        //floating action button 열기,닫기
-        binding.fabMain.setOnClickListener {
-            fab()
-        }
-
-        binding.fabLink.setOnClickListener {
-            Toast.makeText(this,"fablink",Toast.LENGTH_SHORT).show()
-            setLink()
-        }
-        binding.fabFile.setOnClickListener {
-            Toast.makeText(this,"fabfile",Toast.LENGTH_SHORT).show()
-        }
-        binding.fabPhoto.setOnClickListener {
-            Toast.makeText(this,"fabphoto",Toast.LENGTH_SHORT).show()
-        openGallery()
-
-        }
 
 
 
@@ -136,7 +134,10 @@ class CarrierInfoActivity : AppCompatActivity() {
     //링크 입력
     fun setLink() {
 
-        var mTextView = findViewById<TextView>(R.id.ticketName)
+        val Id = MyApplication.prefs.getString("id","")
+
+       // var mTextView = findViewById<TextView>(R.id.ticketName)
+
         val et = EditText(this)
         et.gravity = Gravity.CENTER
         val builder = AlertDialog.Builder(this)
@@ -145,10 +146,10 @@ class CarrierInfoActivity : AppCompatActivity() {
             .setPositiveButton("확인",
             DialogInterface.OnClickListener { dialog, which ->
 
-                mTextView.setText(et.text)
+               // mTextView.setText(et.text)
 
                 //API 연결시 수정
-                setLinkAPI(accessToken,1,"LINK",et.text.toString())
+                setLinkAPI(accessToken,Id.toInt(),"LINK",et.text.toString())
             })
         builder.show()
 

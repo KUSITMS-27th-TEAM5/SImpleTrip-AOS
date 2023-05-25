@@ -59,10 +59,9 @@ class EditCarrierNameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val id = arguments?.getInt("id")
-        Log.d("ididididiid",id.toString())
+       val id = requireArguments().getInt("id")
+        Log.d("id_name",id.toString())
 
-        Log.d("idddddd", id.toString())
         Glide.with(this).load(R.raw.carrierr).into(binding.imgCarrier)
         //수정 완료 버튼
         binding.editFinish.setOnClickListener {
@@ -74,7 +73,7 @@ class EditCarrierNameFragment : Fragment() {
             } else {
 
                 MyApplication.prefs.setString("carrierName", carrierName)
-                 editCarrierName(1,carrierName)
+                 editCarrierName(id,carrierName)
 
                 //뒤로가기
                 requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
