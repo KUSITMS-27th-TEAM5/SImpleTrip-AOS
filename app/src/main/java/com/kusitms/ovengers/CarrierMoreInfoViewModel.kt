@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.api.client.auth.oauth.OAuthGetAccessToken
 import com.kusitms.ovengers.data.ResponseGetTicket
 import com.kusitms.ovengers.data.TicketData
 import com.kusitms.ovengers.retrofit.APIS
@@ -21,9 +22,10 @@ class CarrierMoreInfoViewModel  : ViewModel(){
 
     private val TAG = StorageDetailViewModel::class.java.simpleName
 
+    //이부분 수정
     val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
     val username = MyApplication.prefs.getString("username", "username")
-    val carrierId = MyApplication.prefs.getString("carrierId", "1")
+    val Id = MyApplication.prefs.getString("id", "")
 
     init {
         fetchTicketList()
@@ -33,11 +35,12 @@ class CarrierMoreInfoViewModel  : ViewModel(){
         // Retrofit
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
+
         // Bearer 추가
         val bearerToken = "Bearer $accessToken"
         viewModelScope.launch {
             try {
-                retAPIS.getTicket(bearerToken, carrierId).enqueue(object :
+                retAPIS.getTicket(bearerToken, Id).enqueue(object :
                     Callback<ResponseGetTicket> {
                     override fun onResponse(call: Call<ResponseGetTicket>, response: Response<ResponseGetTicket>) {
                         if (response.isSuccessful) {

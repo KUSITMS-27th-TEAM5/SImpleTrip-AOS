@@ -73,6 +73,9 @@ class EditDateFragment : Fragment() {
 
         val date: Date = Date(binding.calendarView.date)
 
+        val id = requireArguments().getInt("id")
+        Log.d("id_date",id.toString())
+
 
         binding.startDate.setOnClickListener {
 //            binding.calendarView.visibility=View.VISIBLE
@@ -124,7 +127,7 @@ class EditDateFragment : Fragment() {
 
                 MyApplication.prefs.setString("startDay",startDay)
                 MyApplication.prefs.setString("endDay",endDay)
-                editCarrierDate(1,startDay,endDay)
+                editCarrierDate(id,startDay,endDay)
 
                 //뒤로가기
                 requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
