@@ -35,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="45dp"/>
     <EditText
-        android:id="@+id/edittext_carrierName"
+        android:id="@+id/edit_carrierName"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginLeft="25dp"
@@ -47,7 +47,7 @@
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/finish"
+        android:id="@+id/edit_finish"
         android:layout_width="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -55,7 +55,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/border"
-        android:text="캐리어 생성하기" />
+        android:text="수정 완료" />
 
 
 </LinearLayout>

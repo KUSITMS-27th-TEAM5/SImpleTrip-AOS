@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CreateNameFragment"
+    tools:context=".view.ChooseDestinationFragment"
     android:orientation="vertical">
     <!-- 커밋용 -->
     <ImageButton
@@ -19,35 +19,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Step 3  캐리어 이름을 설정해주세요!"
+        android:text="Step 2  어디로 여행을 떠나시나요?"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#444444"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="15dp"/>
 
-    <ImageView
-        android:id="@+id/img_carrier"
-        android:layout_width="270dp"
-        android:layout_height="270dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/carrier"
-        android:layout_gravity="center"
-        android:layout_marginTop="45dp"/>
-    <EditText
-        android:id="@+id/edittext_carrierName"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="40dp"
-        android:hint="캐리어 이름을 지어주세요!"
-        android:privateImeOptions="defaultInputmode=korean"
-        android:background="@drawable/border"
-        android:gravity="center"/>
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/text_korea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:text="국내"
+            android:gravity="center"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/text_world"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:text="해외"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/destination_rv"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"/>
 
     <Button
-        android:id="@+id/finish"
+        android:id="@+id/edit_finish"
         android:layout_width="match_parent"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -55,7 +64,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/border"
-        android:text="캐리어 생성하기" />
+        android:text="수정 완료" />
+
+
 
 
 </LinearLayout>

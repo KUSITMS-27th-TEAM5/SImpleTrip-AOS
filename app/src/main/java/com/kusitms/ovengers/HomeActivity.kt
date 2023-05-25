@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var chooseDateFragment: ChooseDateFragment
     private lateinit var chooseDestinationFragment: ChooseDestinationFragment
     private lateinit var createNameFragment: CreateNameFragment
+    private lateinit var editCarrierNameFragment: EditCarrierNameFragment
 
     private val TAG = HomeActivity::class.java.simpleName
 
@@ -120,5 +121,6 @@ class HomeActivity : AppCompatActivity() {
     fun carrierMakeSuccess() {
         homeFragment = HomeFragment().newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
+        HideBottomNav(false)
     }
 } // 커밋용

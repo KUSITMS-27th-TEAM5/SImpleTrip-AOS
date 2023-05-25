@@ -64,9 +64,6 @@ class CreateNameFragment : Fragment() {
         val startDay= MyApplication.prefs.getString("startDay","String")
         val endDay =  MyApplication.prefs.getString("endDay","String")
 
-        val pattern = DateTimeFormatter.ofPattern("yyyy-M-d")
-        var startdday = LocalDate.parse(startDay, pattern)
-        var enddday = LocalDate.parse(endDay,pattern)
 
         binding.btnBack.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
@@ -81,25 +78,21 @@ class CreateNameFragment : Fragment() {
             if(carrierName=="") {
                 Toast.makeText(context,"캐리어 이름을 입력해주세요",Toast.LENGTH_SHORT).show()
             } else {
-                /*
+
                 MyApplication.prefs.setString("carrierName", carrierName)
 
-                val data = RequestMakeCarrier(
-                    MyApplication.prefs.getString("destination","String"), // 여행 국가
-                    MyApplication.prefs.getString("carrierName","String"), // 캐리어 이름
-                    startdday, // startDate
-                    enddday // endDate
 
-                )*/
 
-                val destination : String = "일본"
-                val name : String = "승균 캐리어"
+                val destination =MyApplication.prefs.getString("destination","String")
+                val name= carrierName
 
                 // 함수 호출
-                createCarrier(accessToken, destination, name, startdday, enddday)
+//                createCarrier(accessToken, destination, name, startDay, endDay)
+                createCarrier(accessToken, destination, name, startDay, endDay)
 
                 val hActivity = activity as HomeActivity
                 hActivity.carrierMakeSuccess()
+
 
             }
 
@@ -108,11 +101,11 @@ class CreateNameFragment : Fragment() {
 
     }
 
-    private fun createCarrier(accessToken: String, destination : String, name : String, startdday : LocalDate, enddday : LocalDate) {
+    private fun createCarrier(accessToken: String, destination : String, name : String, startday : String, endday : String) {
         val bearerToken = "Bearer $accessToken" // Bearer 추가
         retAPIS.addCarrier(
             bearerToken,
-            RequestMakeCarrier(destination, name, startdday, enddday)
+            RequestMakeCarrier(destination, name, startday, endday)
         )
             .enqueue(object : retrofit2.Callback<ResponseMakeCarrier> {
             override fun onResponse(call: Call<ResponseMakeCarrier>, response: Response<ResponseMakeCarrier>) {
@@ -121,6 +114,7 @@ class CreateNameFragment : Fragment() {
                     Log.d("addCarrier Response Message : ", resultMessage)
 
                 } else {
+                    Log.d("fail1", RequestMakeCarrier(destination, name, startday, endday).toString())
                     Log.d("addCarrier Response : ", "Fail 1")
                 }
             } override fun onFailure(call: Call<ResponseMakeCarrier>, t: Throwable) {

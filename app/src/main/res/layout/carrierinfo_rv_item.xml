@@ -45,7 +45,7 @@
         android:id="@+id/img_ticket"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:transitionName="imgTrans"
         android:backgroundTint="#D9D9D9"
         android:src="@drawable/dafaultticket"/>
 
