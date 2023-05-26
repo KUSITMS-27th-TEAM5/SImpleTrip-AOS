@@ -3,8 +3,10 @@ package com.kusitms.ovengers
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kusitms.ovengers.data.TicketData
 
 class StorageDetailAdapter (
@@ -36,9 +38,10 @@ class StorageDetailAdapter (
 }
 class StorageDetailViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     private val title : TextView = view.findViewById<TextView>(R.id.title)
-    //private val img : ImageView = view.findViewById(R.id.img)
+    private val img : ImageView = view.findViewById(R.id.img)
 
     fun bind(task: TicketData, clickListener: (TicketData) -> Unit) {
+
         title.text = task.title
 
         view.setOnClickListener {

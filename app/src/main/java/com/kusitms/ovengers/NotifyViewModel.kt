@@ -22,8 +22,7 @@ class NotifyViewModel : ViewModel() {
     private val TAG = NotifyViewModel::class.java.simpleName
 
     // SharedPreferences 조희
-    // val accessToken = MyApplication.prefs.getString("accessToken", "token")
-    val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
+    val accessToken = MyApplication.prefs.getString("accessToken", "token")
     val username = MyApplication.prefs.getString("username", "username")
 
     init {
