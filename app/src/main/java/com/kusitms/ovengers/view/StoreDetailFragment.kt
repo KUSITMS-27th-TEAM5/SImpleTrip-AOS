@@ -59,11 +59,12 @@ class StoreDetailFragment : Fragment() {
 
         // 포인트 차감 - 다음 페이지로
         binding.btnNext.setOnClickListener {
+
             // 차감할 포인트
             var inputPoint : String = binding.editText.text.toString()
 
             // 포인트 차감 API 호출
-            setPoint(accessToken, inputPoint)
+            setPoint(accessToken)
 
             val storeFinishFragment = StoreFinishFragment()
             val bundle = Bundle()
@@ -130,8 +131,14 @@ class StoreDetailFragment : Fragment() {
     }
 
     // 포인트 차감 API
-    private fun setPoint(accessToken: String, inputPoint : String) {
+    private fun setPoint(accessToken: String) {
         val bearerToken = "Bearer $accessToken" // Bearer 추가
+        // 차감할 포인트
+        var inputPoint : String = binding.editText.text.toString()
+
+        if (inputPoint == "") {
+            inputPoint = "0"
+        }
         var point : Int = inputPoint.toInt() // Int 형변환
         retAPIS.setPoint(bearerToken, PointRequestBody(point)).enqueue(object : Callback<ResponseSetPoint> {
             override fun onResponse(call: Call<ResponseSetPoint>, response: Response<ResponseSetPoint>) {

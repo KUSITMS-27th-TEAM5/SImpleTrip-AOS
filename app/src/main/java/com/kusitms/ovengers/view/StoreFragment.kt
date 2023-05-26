@@ -125,6 +125,27 @@ class StoreFragment : Fragment() {
             }
         }
 
+        // Notify 페이지 이동
+        binding.btnBell.setOnClickListener{
+            val notify = NotifyFragment()
+
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, notify)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        // MyPage 이동
+        binding.btnMypage.setOnClickListener {
+            val myPage = Mypage()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, myPage)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
         return binding.root
     }
 } // 커밋용
