@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun move(accessToken : String, email : String, userName : String){
         // sharedPreference에 accessToken,email,userName 저장
-        MyApplication.prefs.setString("accessToken", accessToken)
+        MyApplication.prefs.setString("Set accessToken", accessToken)
         MyApplication.prefs.setString("email",email)
         MyApplication.prefs.setString("userName",userName)
 
@@ -163,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         MyApplication.prefs.setString("accessToken", accessToken)
         MyApplication.prefs.setString("email",email)
         MyApplication.prefs.setString("userName",userName)
+        MyApplication.prefs.setString("username","쨍")
 
         // 엑티비티 전환, intent -> email, userName
         val intent = Intent(this, BoardingActivity_1::class.java)

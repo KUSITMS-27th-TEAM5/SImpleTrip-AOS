@@ -81,12 +81,12 @@ class ChooseDateFragment : Fragment() {
 
             binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 startYear = "${y}"
-                startMonth = "${m}"
+                startMonth = "${m+1}"
                 startDate = "${d}"
-                binding.startDate.setText("${y}년 ${m}월 ${d}일")
+                binding.startDate.setText("${y}년 ${m+1}월 ${d}일")
                 binding.startDate.setTextColor(Color.parseColor("#855EFF"))
                 if (m<10) {
-                    startMonth = "0${m}"
+                    startMonth = "0${m+1}"
                 }
                 if (d<10) {
                     startDate = "0${d}"
@@ -102,12 +102,12 @@ class ChooseDateFragment : Fragment() {
 
             binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 endYear = "${y}"
-                endMonth = "${m}"
+                endMonth = "${m+1}"
                 endDate = "${d}"
-                binding.endDate.setText("${y}년 ${m}월 ${d}일")
+                binding.endDate.setText("${y}년 ${m+1}월 ${d}일")
                 binding.endDate.setTextColor(Color.parseColor("#855EFF"))
                 if (m<10) {
-                    endMonth = "0${m}"
+                    endMonth = "0${m+1}"
                 }
                 if (d<10) {
                     endDate = "0${d}"
