@@ -41,8 +41,6 @@ class EditCountryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val hActivity = activity as HomeActivity
-        hActivity.HideBottomNav(true)
 
     }
 
