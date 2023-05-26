@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         // 구글 로그인 버튼
         binding.btnLogin.setOnClickListener {
-            googleLogin()
+            //googleLogin()
+            moveOnBording("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvdm91ampAZ21haWwuY29tIiwiaWF0IjoxNjg1MDcxMTg1LCJleHAiOjE2ODUzMzAzODV9.PvCLl5GK6WTIfPqJ9RBrDRx7YahT9IfGQpiafoN46ilatLWHSlleSnPCCQfkvNW0GBVo2bhqyLbm0roq55YB2A"
+                , "ovoujj@gmail.com"
+                , "쨍")
         }
 
         // Config SignIn
@@ -160,9 +163,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun moveOnBording(accessToken : String, email : String, userName : String){
         // sharedPreference에 accessToken,email,userName 저장
-        MyApplication.prefs.setString("accessToken", accessToken)
-        MyApplication.prefs.setString("email",email)
-        MyApplication.prefs.setString("userName",userName)
+        MyApplication.prefs.setString("accessToken", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvdm91ampAZ21haWwuY29tIiwiaWF0IjoxNjg1MDcxMTg1LCJleHAiOjE2ODUzMzAzODV9.PvCLl5GK6WTIfPqJ9RBrDRx7YahT9IfGQpiafoN46ilatLWHSlleSnPCCQfkvNW0GBVo2bhqyLbm0roq55YB2A")
+        MyApplication.prefs.setString("email","ovoujj@gmail.com")
+        MyApplication.prefs.setString("userName","쨍")
         MyApplication.prefs.setString("username","쨍")
 
         // 엑티비티 전환, intent -> email, userName
