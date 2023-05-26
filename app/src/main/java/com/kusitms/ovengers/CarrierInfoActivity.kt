@@ -26,6 +26,7 @@ import com.kusitms.ovengers.databinding.ActivityCarrierInfoBinding
 import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
 import com.kusitms.ovengers.view.HomeFragment
+import com.kusitms.ovengers.view.NotDeveloped
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -104,11 +105,21 @@ class CarrierInfoActivity : AppCompatActivity() {
                 setLink()
             }
             binding.fabFile.setOnClickListener {
-                Toast.makeText(this,"fabfile",Toast.LENGTH_SHORT).show()
+
+                val fragment = NotDeveloped()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.carrierInfo, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
             }
             binding.fabPhoto.setOnClickListener {
-                Toast.makeText(this,"fabphoto",Toast.LENGTH_SHORT).show()
-                openGallery()
+//                Toast.makeText(this,"fabphoto",Toast.LENGTH_SHORT).show()
+//                openGallery()
+                val fragment = NotDeveloped()
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.carrierInfo, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
 
             }
 

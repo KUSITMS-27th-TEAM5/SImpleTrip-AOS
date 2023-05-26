@@ -77,22 +77,42 @@ class ReviewFragment : Fragment() {
             openGallery()
         }
 
+//        binding.save.setOnClickListener{
+//            fragmentManager?.beginTransaction()?.apply {
+////                replace(R.id.constraint_layout, storageFragment)
+////                addToBackStack(null)
+////                commit()
+//                remove(this@ReviewFragment).commit()
+//            }
+//        }
+
+        binding.btnBack.setOnClickListener {
+            fragmentManager?.beginTransaction()?.apply {
+//
+                remove(this@ReviewFragment).commit()
+            }
+        }
         binding.save.setOnClickListener {
-            val editText: String = binding.text.text.toString()
-            text = editText
-            Log.d("PostMemo Text : ", text)
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED
-            ) {
-                //postMemo(accessToken, carrierId, ticketId, text)
-            } else {
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    PERMISSION_REQUEST_CODE
-                )
+//            val editText: String = binding.text.text.toString()
+//            text = editText
+//            Log.d("PostMemo Text : ", text)
+//            if (ContextCompat.checkSelfPermission(
+//                    requireContext(),
+//                    Manifest.permission.READ_EXTERNAL_STORAGE
+//                ) == PackageManager.PERMISSION_GRANTED
+//            ) {
+//                //postMemo(accessToken, carrierId, ticketId, text)
+//            } else {
+//                ActivityCompat.requestPermissions(
+//                    requireActivity(),
+//                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+//                    PERMISSION_REQUEST_CODE
+//                )
+//            }
+
+            fragmentManager?.beginTransaction()?.apply {
+//
+                remove(this@ReviewFragment).commit()
             }
         }
     }

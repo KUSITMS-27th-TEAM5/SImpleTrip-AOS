@@ -46,8 +46,8 @@ class ChooseDateFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val hActivity = activity as HomeActivity
-        hActivity.HideBottomNav(true)
+//        val hActivity = activity as HomeActivity
+//        hActivity.HideBottomNav(true)
     }
 
     override fun onCreateView(
