@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="730dp"
     tools:context=".view.NotDeveloped"
     android:background="#FFFFFF">
 
@@ -17,7 +17,7 @@
         android:src="@drawable/btn_mypage_before"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-ㄷ
+
     <ImageView
         android:id="@+id/diamond"
         android:layout_width="225dp"
