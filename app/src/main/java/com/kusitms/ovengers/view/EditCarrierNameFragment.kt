@@ -28,7 +28,7 @@ class EditCarrierNameFragment : Fragment() {
 
     private lateinit var retAPIS: APIS
     private lateinit var binding : FragmentEditCarrierNameBinding
-    val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
+    val accessToken = MyApplication.prefs.getString("accessToken", "token")
     var carrierName = ""
 
     fun newInstance() : EditCarrierNameFragment{

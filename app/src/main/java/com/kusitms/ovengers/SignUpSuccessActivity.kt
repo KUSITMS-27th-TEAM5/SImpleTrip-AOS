@@ -21,8 +21,4 @@ class SignUpSuccessActivity : AppCompatActivity() {
         }
     }
 
-
-
-
-
-} // 커밋용
+}

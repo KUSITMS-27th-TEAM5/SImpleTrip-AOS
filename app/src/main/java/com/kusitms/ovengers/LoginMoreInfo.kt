@@ -198,7 +198,7 @@ class LoginMoreInfo : AppCompatActivity(){
         if (nickName=="") {
             Toast.makeText(baseContext,"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
         } else {
-            MyApplication.prefs.setString("nickName",nickName)
+            MyApplication.prefs.setString("username",nickName)
             val intent = Intent(this, SignUpSuccessActivity::class.java)
             startActivity(intent)
         }

@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var carrierAdapter: CarrierAdapter
 //    private lateinit var _binding : FragmentHomeBinding
     lateinit var binding : FragmentHomeBinding
-    val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
+    val accessToken = MyApplication.prefs.getString("accessToken", "token")
     private lateinit var viewModel: CarrierViewModel
 //    var carrierData = ArrayList<Ddata>()
 
@@ -195,7 +195,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val nickname = MyApplication.prefs.getString("nickName","String")
+        val nickname = "쨍"
 
 
         binding.carrierWho.setText("${nickname} 님의 티켓 캐리어")
