@@ -56,6 +56,7 @@ class StorageFragment : Fragment() {
         // Notify 페이지 이동
         binding.btnBell.setOnClickListener{
             val notify = NotifyFragment()
+
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.constraint_layout, notify)
                 addToBackStack(null)
