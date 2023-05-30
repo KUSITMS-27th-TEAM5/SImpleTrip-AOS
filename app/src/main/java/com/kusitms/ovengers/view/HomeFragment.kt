@@ -208,6 +208,7 @@ class HomeFragment : Fragment() {
                 replace(R.id.constraint_layout, notify)
                 addToBackStack(null)
                 commit()
+                Toast.makeText(context,"alarm",Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -218,8 +219,11 @@ class HomeFragment : Fragment() {
                 replace(R.id.constraint_layout, myPage)
                 addToBackStack(null)
                 commit()
+                Toast.makeText(context,"mypage",Toast.LENGTH_SHORT).show()
             }
         }
+
+
 
 
 
