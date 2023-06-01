@@ -9,6 +9,9 @@
 
     <uses-feature android:name="android.hardware.camera2" />
 
+    <!--인터넷 사용 권한 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
