@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.data.StorageData
 import com.kusitms.ovengers.data.TestResponse
 
-class StorageAdapter (
+class StorageAdapter (// 커밋용
     private val storageList: MutableList<StorageData> = mutableListOf(),
     private val clickListener:(StorageData)->Unit
 ) : RecyclerView.Adapter<ViewHolder>(){

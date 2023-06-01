@@ -24,6 +24,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class StorageDetailFragment : Fragment() {
+    // 커밋용
 
     lateinit var binding: FragmentStorageDetailBinding
     private lateinit var retAPIS: APIS

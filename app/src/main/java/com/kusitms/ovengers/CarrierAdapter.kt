@@ -42,7 +42,7 @@ class CarrierAdapter(
     //item click
 
 
-
+    // 커밋용
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

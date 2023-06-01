@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.ChallengeDetailFragment"
     android:background="@color/main_white">
-    <!-- 커밋용 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout"
         android:layout_width="match_parent"

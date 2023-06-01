@@ -22,6 +22,7 @@ import java.util.*
 
 
 class ChooseDateFragment : Fragment() {
+    // 커밋용
 
     fun newInstance() : ChooseDateFragment{
         return ChooseDateFragment()

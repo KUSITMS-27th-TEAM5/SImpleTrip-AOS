@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class BoardingActivity_1 : AppCompatActivity() {
+    // 커밋용
 
     //val layout : ConstraintLayout = findViewById(R.id.constraint_layout)
 

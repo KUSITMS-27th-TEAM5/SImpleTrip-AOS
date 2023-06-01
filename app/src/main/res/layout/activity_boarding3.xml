@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/constraint_layout"
     tools:context=".BoardingActivity_3">
+    <!--커밋용-->
 
     <ImageView
         android:id="@+id/imageView5"

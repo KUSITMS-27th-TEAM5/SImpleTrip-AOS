@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.MypageFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mypage"
         android:layout_width="match_parent"

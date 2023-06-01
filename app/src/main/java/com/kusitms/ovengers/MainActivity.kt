@@ -23,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {// 커밋용
     companion object {
         private const val TAG = "MainActivity"
         private var GOOGLE_LOGIN_CODE = 9001
@@ -175,4 +175,4 @@ class MainActivity : AppCompatActivity() {
         finish()
         startActivity(intent)
     }
-} // 커밋용
+}

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.data.TicketData
 import com.kusitms.ovengers.data.carrierMoreInfo
 
-class CarrierMoreInfoAdapter (
+class CarrierMoreInfoAdapter (// 커밋용
     private val ticketList: MutableList<TicketData> = mutableListOf(),
 
     ) : RecyclerView.Adapter<CarrierMoreInfoAdapter.ViewHolder>(){

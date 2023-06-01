@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class StoreDetailFragment : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreDetailBinding

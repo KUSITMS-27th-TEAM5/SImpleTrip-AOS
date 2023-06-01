@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class SignUpSuccessActivity : AppCompatActivity() {
+class SignUpSuccessActivity : AppCompatActivity() {// 커밋용
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

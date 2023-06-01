@@ -16,7 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StorageDetailViewModel : ViewModel() {
+class StorageDetailViewModel : ViewModel() {// 커밋용
     private lateinit var retAPIS: APIS
     private val _ticketList = MutableLiveData<List<TicketData>>()
     val ticketList : LiveData<List<TicketData>> = _ticketList

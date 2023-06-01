@@ -24,6 +24,7 @@ import retrofit2.Response
 
 
 class EditCountryFragment : Fragment() {
+    // 커밋용
 
     private lateinit var destinationAdapter : DestinationAdapter
     private val dataSet = ArrayList<Destination>()

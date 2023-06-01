@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kusitms.ovengers.data.TicketData
 
-class StorageDetailAdapter (
+class StorageDetailAdapter (// 커밋용
     private val ticketList: MutableList<TicketData> = mutableListOf(),
     private val clickListener:(TicketData)->Unit
 ) : RecyclerView.Adapter<StorageDetailViewHolder>(){

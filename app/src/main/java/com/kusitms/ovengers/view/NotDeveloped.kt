@@ -10,6 +10,7 @@ import android.widget.ImageView
 import com.kusitms.ovengers.R
 
 class NotDeveloped : Fragment() {
+    // 커밋용
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

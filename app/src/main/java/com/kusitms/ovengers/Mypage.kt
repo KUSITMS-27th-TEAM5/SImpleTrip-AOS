@@ -48,7 +48,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.GET
 
-class Mypage : Fragment() {
+class Mypage : Fragment() {// 커밋용
 
     val REQUEST_PERMISSION = 100
     val REQUEST_GALLERY = 200

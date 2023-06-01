@@ -14,7 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class NotifyViewModel : ViewModel() {
+class NotifyViewModel : ViewModel() {// 커밋용
     private lateinit var retAPIS: APIS
     private val _alarm = MutableLiveData<List<AlarmData>>()
     val alarm : LiveData<List<AlarmData>> = _alarm

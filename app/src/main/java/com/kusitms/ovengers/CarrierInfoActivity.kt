@@ -38,7 +38,7 @@ class CarrierInfoActivity : AppCompatActivity() {
     private lateinit var viewModel : CarrierMoreInfoViewModel
 
 
-
+// 커밋용
 
 //    private val dataSet = ArrayList<carrierMoreInfo>()
     private var isFabOpen = false

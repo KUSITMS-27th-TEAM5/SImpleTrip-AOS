@@ -25,6 +25,7 @@ import retrofit2.Response
 
 
 class EditCarrierNameFragment : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     private lateinit var binding : FragmentEditCarrierNameBinding

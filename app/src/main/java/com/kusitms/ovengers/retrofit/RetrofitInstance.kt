@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitInstance {
+    // 커밋용
     private const val URL = "http://15.164.248.167:8080/"
 
     private val retrofit= Retrofit.Builder()

@@ -28,6 +28,7 @@ import javax.security.auth.callback.Callback
 
 
 class CreateNameFragment : Fragment() {
+    // 커밋용
     private lateinit var retAPIS: APIS
 
     val accessToken = MyApplication.prefs.getString("accessToken", "token")

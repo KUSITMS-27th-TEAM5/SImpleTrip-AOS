@@ -28,6 +28,7 @@ class NotifyFragment : Fragment() {
     private lateinit var notifyAdapter : NotifyAdapter
 
     fun newInstance() : NotifyFragment{
+        // 커밋용
         return NotifyFragment()
     }
 

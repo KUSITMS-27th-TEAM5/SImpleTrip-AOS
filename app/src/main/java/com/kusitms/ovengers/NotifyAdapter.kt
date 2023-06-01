@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.data.AlarmData
 
-class NotifyAdapter (
+class NotifyAdapter (// 커밋용
     private val alarm: MutableList<AlarmData> = mutableListOf(),
     private val clickListener:(AlarmData)->Unit
 ) : RecyclerView.Adapter<NotifyViewHolder>(){

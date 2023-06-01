@@ -23,6 +23,7 @@ import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     private lateinit var carrierAdapter: CarrierAdapter

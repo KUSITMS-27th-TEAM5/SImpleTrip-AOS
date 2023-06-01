@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.kusitms.ovengers.databinding.ActivityCarrierInfoBinding
 import com.kusitms.ovengers.databinding.ActivityTicketDetailBinding
 
-class TicketDetailActivity : AppCompatActivity() {
+class TicketDetailActivity : AppCompatActivity() {// 커밋용
 
     lateinit var binding : ActivityTicketDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {

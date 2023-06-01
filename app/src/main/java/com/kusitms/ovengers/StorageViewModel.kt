@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.util.Log
 
-class StorageViewModel : ViewModel() {
+class StorageViewModel : ViewModel() {// 커밋용
     private lateinit var retAPIS: APIS
     private val _storageList = MutableLiveData<List<StorageData>>()
     val storageList : LiveData<List<StorageData>> = _storageList

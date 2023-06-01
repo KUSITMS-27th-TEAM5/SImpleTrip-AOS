@@ -20,6 +20,7 @@ import com.kusitms.ovengers.databinding.FragmentChooseDestinationBinding
 
 
 class ChooseDestinationFragment : Fragment() {
+    // 커밋용
 
     private lateinit var destinationAdapter : DestinationAdapter
     private var _binding : FragmentChooseDestinationBinding? = null

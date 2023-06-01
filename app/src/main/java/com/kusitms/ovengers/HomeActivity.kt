@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kusitms.ovengers.view.*
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() { // 커밋용
 
     private lateinit var storeFragment : StoreFragment
     private lateinit var homeFragment : HomeFragment

@@ -25,6 +25,7 @@ import retrofit2.Response
 
 
 class StorageFragment : Fragment() {
+    // 커밋용
 
     lateinit var binding: FragmentStorageBinding
     private lateinit var retAPIS: APIS

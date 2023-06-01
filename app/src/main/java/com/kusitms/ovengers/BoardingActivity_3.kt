@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 
 class BoardingActivity_3 : AppCompatActivity() {
-
+    // 커밋용
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_boarding3)

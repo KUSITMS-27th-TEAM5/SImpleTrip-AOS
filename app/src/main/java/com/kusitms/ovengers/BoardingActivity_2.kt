@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 
 class BoardingActivity_2 : AppCompatActivity() {
 
+
     //val layout : ConstraintLayout = findViewById(R.id.constraint_layout)
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -179,5 +179,5 @@ interface APIS {
         @Query("id") id : String,
     ): Call<ResponseGetMemo>
 
-
+// 커밋용
 }

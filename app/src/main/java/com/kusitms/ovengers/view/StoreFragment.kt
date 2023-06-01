@@ -13,6 +13,7 @@ import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
 
 class StoreFragment : Fragment() {
+    // 커밋용
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreBinding
     fun newInstance() : StoreFragment{
