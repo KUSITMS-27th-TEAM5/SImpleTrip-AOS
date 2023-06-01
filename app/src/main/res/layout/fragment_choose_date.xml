@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ChooseDateFragment"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ffffff"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_back_button"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Step 1  언제 여행을 떠나시나요?"
+        android:textSize="20sp"
+        android:fontFamily="@font/pretendard_bold"
+        android:textStyle="bold"
+        android:textColor="#444444"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="15dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="여행 날짜"
+        android:textSize="16sp"
+        android:fontFamily="@font/pretendard_bold"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="23dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_width="124dp"
+            android:layout_height="30dp"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:textColor="#777777"
+            android:background="@drawable/border"
+            android:text="2023년 5월 10일"/>
+        <TextView
+            android:layout_marginLeft="27dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="30sp"
+            android:text="-"/>
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_marginLeft="27dp"
+            android:gravity="center"
+            android:layout_width="124dp"
+            android:layout_height="30dp"
+            android:textColor="#777777"
+            android:background="@drawable/border"
+            android:textSize="12sp"
+            android:text="2023년 5월 13일"/>
+
+
+
+    </LinearLayout>
+    
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/pretendard_bold"
+        android:background="@drawable/border"
+        android:text="다음"/>
+
+
+
+
+
+
+
+
+</LinearLayout>
