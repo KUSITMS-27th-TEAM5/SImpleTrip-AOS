@@ -23,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {// 커밋용
     companion object {
         private const val TAG = "MainActivity"
         private var GOOGLE_LOGIN_CODE = 9001
@@ -48,7 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         // 구글 로그인 버튼
         binding.btnLogin.setOnClickListener {
-            googleLogin()
+            //googleLogin()
+            moveOnBording("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvdm91ampAZ21haWwuY29tIiwiaWF0IjoxNjg1MDcxMTg1LCJleHAiOjE2ODUzMzAzODV9.PvCLl5GK6WTIfPqJ9RBrDRx7YahT9IfGQpiafoN46ilatLWHSlleSnPCCQfkvNW0GBVo2bhqyLbm0roq55YB2A"
+                , "ovoujj@gmail.com"
+                , "쨍")
         }
 
         // Config SignIn
@@ -119,7 +122,21 @@ class MainActivity : AppCompatActivity() {
                     Log.d("AccessToken Response : ", accessToken)
                     Log.d("AccessToken refreshToken : ", refreshToken)
 
-                    move(accessToken, email, userName)
+                    var code = response.body()?.code
+
+                    Log.d("Code! : ", code.toString())
+
+                    if (code == -1000) {
+                        moveOnBording(accessToken, email, userName)
+                    } else if (code == -1001) {
+                        move(accessToken, email, userName)
+                    } else if (code == -1002) {
+                        move(accessToken, email, userName)
+                    } else {
+                        Log.d("code -1009", "유효하지 않은 구글 액세스 토큰입니다.")
+                    }
+
+
                 } else {
                     Log.d("Oauth Login Response : ", "Fail 1")
                 }
@@ -131,7 +148,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun move(accessToken : String, email : String, userName : String){
         // sharedPreference에 accessToken,email,userName 저장
-        MyApplication.prefs.setString("accessToken", accessToken)
+        MyApplication.prefs.setString("Set accessToken", accessToken)
         MyApplication.prefs.setString("email",email)
         MyApplication.prefs.setString("userName",userName)
 
@@ -140,6 +157,21 @@ class MainActivity : AppCompatActivity() {
 //        intent.putExtra("email", email)
 //        intent.putExtra("userName", userName)
 
+        finish()
+        startActivity(intent)
+    }
+
+    private fun moveOnBording(accessToken : String, email : String, userName : String){
+        // sharedPreference에 accessToken,email,userName 저장
+        MyApplication.prefs.setString("accessToken", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvdm91ampAZ21haWwuY29tIiwiaWF0IjoxNjg1MDcxMTg1LCJleHAiOjE2ODUzMzAzODV9.PvCLl5GK6WTIfPqJ9RBrDRx7YahT9IfGQpiafoN46ilatLWHSlleSnPCCQfkvNW0GBVo2bhqyLbm0roq55YB2A")
+        MyApplication.prefs.setString("email","ovoujj@gmail.com")
+        MyApplication.prefs.setString("userName","쨍")
+        MyApplication.prefs.setString("username","쨍")
+
+        // 엑티비티 전환, intent -> email, userName
+        val intent = Intent(this, BoardingActivity_1::class.java)
+//        intent.putExtra("email", email)
+//        intent.putExtra("userName", userName)
         finish()
         startActivity(intent)
     }

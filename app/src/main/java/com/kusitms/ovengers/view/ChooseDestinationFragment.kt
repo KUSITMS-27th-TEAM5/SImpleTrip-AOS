@@ -13,12 +13,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kusitms.ovengers.DestinationAdapter
 import com.kusitms.ovengers.HomeActivity
+import com.kusitms.ovengers.MyApplication
 import com.kusitms.ovengers.R
 import com.kusitms.ovengers.data.Destination
 import com.kusitms.ovengers.databinding.FragmentChooseDestinationBinding
 
 
 class ChooseDestinationFragment : Fragment() {
+    // 커밋용
 
     private lateinit var destinationAdapter : DestinationAdapter
     private var _binding : FragmentChooseDestinationBinding? = null
@@ -122,6 +124,7 @@ class ChooseDestinationFragment : Fragment() {
           if(destination=="") {
               Toast.makeText(context,"여행지를 선택해 주세요",Toast.LENGTH_SHORT).show()
           } else {
+              MyApplication.prefs.setString("destination", destination)
               val hActivity = activity as HomeActivity
               hActivity.step2Step3()
           }
@@ -135,4 +138,4 @@ class ChooseDestinationFragment : Fragment() {
 
 
 
-}
+} // 커밋용

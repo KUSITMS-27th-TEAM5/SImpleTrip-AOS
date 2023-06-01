@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {// 커밋용
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -19,4 +19,4 @@ class SplashActivity : AppCompatActivity() {
             // 5.2초
         }, 5200)
     }
-} // 커밋용
+} //커밋용

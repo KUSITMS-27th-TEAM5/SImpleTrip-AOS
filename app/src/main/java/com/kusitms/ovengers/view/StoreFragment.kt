@@ -13,6 +13,7 @@ import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
 
 class StoreFragment : Fragment() {
+    // 커밋용
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreBinding
     fun newInstance() : StoreFragment{
@@ -35,7 +36,7 @@ class StoreFragment : Fragment() {
         // 유저 네임 설정
         binding.username.text = username
 
-        // Mypage 이동
+        // MyPage 이동
         binding.btnMypage.setOnClickListener {
             val myPage = Mypage()
             fragmentManager?.beginTransaction()?.apply {
@@ -125,6 +126,27 @@ class StoreFragment : Fragment() {
             }
         }
 
+        // Notify 페이지 이동
+        binding.btnBell.setOnClickListener{
+            val notify = NotifyFragment()
+
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, notify)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        // MyPage 이동
+        binding.btnMypage.setOnClickListener {
+            val myPage = Mypage()
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.constraint_layout, myPage)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
         return binding.root
     }
-}
+} // 커밋용

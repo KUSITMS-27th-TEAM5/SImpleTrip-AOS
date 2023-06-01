@@ -1,17 +1,19 @@
 package com.kusitms.ovengers
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.transaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kusitms.ovengers.view.*
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() { // 커밋용
 
     private lateinit var storeFragment : StoreFragment
     private lateinit var homeFragment : HomeFragment
@@ -35,27 +37,50 @@ class HomeActivity : AppCompatActivity() {
 
 
         // 바텀 네비게이션 아이템 클릭 리스터 설정
-        val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener{
+        val onBottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
             val ap = true
+
+            val fab = findViewById<FloatingActionButton>(R.id.fab)
+            fab.setOnClickListener {
+                // HomeFragment로 전환
+                val homeFragment = HomeFragment()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.Main_Frame, homeFragment)
+                    .commit()
+            }
+
+
             when (it.itemId) {
+
                 R.id.navigation_store -> {
                     storeFragment = StoreFragment().newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, storeFragment).commit()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.Main_Frame, storeFragment).commit()
 
-                    Log.d("Nav : ","Store Fragment")
+                    Log.d("Nav : ", "Store Fragment")
                 }
+
+//                R.id.fab -> {
+//                    homeFragment = HomeFragment().newInstance()
+//                    supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
+//                    Log.d("Nav : ","Home Fragment")
+//
+//                }
+
                 R.id.navigation_home -> {
                     homeFragment = HomeFragment().newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, homeFragment).commit()
                     Log.d("Nav : ","Home Fragment")
 
                 }
+
+
                 R.id.navigation_storage -> {
                     storageFragment = StorageFragment().newInstance()
                     supportFragmentManager.beginTransaction().replace(R.id.Main_Frame, storageFragment).commit()
                     Log.d("Nav : ","Storage Fragment")
-
                 }
+
             }
             true
         }

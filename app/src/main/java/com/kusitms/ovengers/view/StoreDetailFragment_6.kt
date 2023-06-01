@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class StoreDetailFragment_6 : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreDetail6Binding
@@ -40,8 +41,7 @@ class StoreDetailFragment_6 : Fragment() {
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
         // SharedPreferences 조희
-        // val accessToken = MyApplication.prefs.getString("accessToken", "token")
-        val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
+        val accessToken = MyApplication.prefs.getString("accessToken", "token")
         val username = MyApplication.prefs.getString("username", "username")
 
 
@@ -154,4 +154,4 @@ class StoreDetailFragment_6 : Fragment() {
         })
     }
 
-}
+} // 커밋용

@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class StoreDetailFragment : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreDetailBinding
@@ -40,8 +41,7 @@ class StoreDetailFragment : Fragment() {
         retAPIS = RetrofitInstance.retrofitInstance().create(APIS::class.java)
 
         // SharedPreferences 조희
-        // val accessToken = MyApplication.prefs.getString("accessToken", "token")
-        val accessToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJza2Rrc21zMTIzQGdtYWlsLmNvbSIsImlhdCI6MTY4NDE2NjcxNSwiZXhwIjoxNjg2NzU4NzE1fQ.GHxv56XM0Cfst4JyCI5cXf5NLh82aGwbjKcKAV6-M_lijRVve_O-CcTlwvUsfPsTQFZ8-t_la4nHehIlryDTiQ"
+        val accessToken = MyApplication.prefs.getString("accessToken", "token")
         val username = MyApplication.prefs.getString("username", "username")
 
 
@@ -59,11 +59,12 @@ class StoreDetailFragment : Fragment() {
 
         // 포인트 차감 - 다음 페이지로
         binding.btnNext.setOnClickListener {
+
             // 차감할 포인트
             var inputPoint : String = binding.editText.text.toString()
 
             // 포인트 차감 API 호출
-            setPoint(accessToken, inputPoint)
+            setPoint(accessToken)
 
             val storeFinishFragment = StoreFinishFragment()
             val bundle = Bundle()
@@ -130,8 +131,14 @@ class StoreDetailFragment : Fragment() {
     }
 
     // 포인트 차감 API
-    private fun setPoint(accessToken: String, inputPoint : String) {
+    private fun setPoint(accessToken: String) {
         val bearerToken = "Bearer $accessToken" // Bearer 추가
+        // 차감할 포인트
+        var inputPoint : String = binding.editText.text.toString()
+
+        if (inputPoint == "") {
+            inputPoint = "0"
+        }
         var point : Int = inputPoint.toInt() // Int 형변환
         retAPIS.setPoint(bearerToken, PointRequestBody(point)).enqueue(object : Callback<ResponseSetPoint> {
             override fun onResponse(call: Call<ResponseSetPoint>, response: Response<ResponseSetPoint>) {
@@ -141,7 +148,6 @@ class StoreDetailFragment : Fragment() {
                     val point = response.body()?.data
                     Log.d("Set Point Response Message : ", response.message())
                     Log.d("Set Point Result : ", point.toString())
-
                 } else {
                     if (code == "-5001") { // 토큰 만료
                         newToken(bearerToken) // 토큰 재발급 함수 호출
@@ -154,4 +160,4 @@ class StoreDetailFragment : Fragment() {
         })
     }
 
-}
+} // 커밋용

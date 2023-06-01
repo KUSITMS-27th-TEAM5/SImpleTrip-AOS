@@ -98,7 +98,7 @@ class LoginMoreInfo : AppCompatActivity(){
         //달력
         val cal = Calendar.getInstance()
 
-
+        nickName = binding.editTextNickname.text.toString()
         binding.datePickBtn.setOnClickListener {
             DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, y, m, d ->
                 binding.yearText.text = "${y}"
@@ -193,30 +193,13 @@ class LoginMoreInfo : AppCompatActivity(){
         binding.ImgUser.setImageResource(R.drawable.ic_profile_default)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(resultCode == RESULT_OK) {
-            when(requestCode) {
-                REQ_GALLERY -> {
-                    data?.data?.let {uri ->
-                        binding.ImgUser.setImageURI(uri)
-
-                    }
-                }
-            }
-        }
-
-    }
 
     private fun moveToHome () {
-        nickName = binding.editTextNickname.text.toString()
         if (nickName=="") {
             Toast.makeText(baseContext,"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
         } else {
-            MyApplication.prefs.setString("nickName",nickName)
+            MyApplication.prefs.setString("username",nickName)
             val intent = Intent(this, SignUpSuccessActivity::class.java)
-            finish()
             startActivity(intent)
         }
 
@@ -224,8 +207,8 @@ class LoginMoreInfo : AppCompatActivity(){
 
 
 
-
-} // 커밋용
+// 커밋용
+}
 
 
 

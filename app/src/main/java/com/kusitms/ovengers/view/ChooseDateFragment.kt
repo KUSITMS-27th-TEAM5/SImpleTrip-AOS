@@ -22,6 +22,7 @@ import java.util.*
 
 
 class ChooseDateFragment : Fragment() {
+    // 커밋용
 
     fun newInstance() : ChooseDateFragment{
         return ChooseDateFragment()
@@ -31,13 +32,13 @@ class ChooseDateFragment : Fragment() {
     var startMonth = ""
     var startDate = ""
     var startDay = ""
-//    var start = LocalDate.now()
+
 
     var endYear = ""
     var endMonth = ""
     var endDate = ""
     var endDay = ""
-    //var end = ""
+
 
 
     private var _binding : FragmentChooseDateBinding? = null
@@ -46,8 +47,8 @@ class ChooseDateFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val hActivity = activity as HomeActivity
-        hActivity.HideBottomNav(true)
+//        val hActivity = activity as HomeActivity
+//        hActivity.HideBottomNav(true)
     }
 
     override fun onCreateView(
@@ -71,37 +72,49 @@ class ChooseDateFragment : Fragment() {
 
 
         //날짜 형태
-        val dateFormat : DateFormat = SimpleDateFormat("yyyy년mm월dd일")
+      //  val dateFormat: DateFormat = SimpleDateFormat("yyyy년mm월dd일")
         //date타입
-        val date : Date = Date(binding.calendarView.date)
+        val date: Date = Date(binding.calendarView.date)
 
 
-        binding.startDate.setOnClickListener{
+        binding.startDate.setOnClickListener {
 //            binding.calendarView.visibility=View.VISIBLE
 
-            binding.calendarView.setOnDateChangeListener{
-                calendarView, y, m, d ->
+            binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 startYear = "${y}"
-                startMonth = "${m}"
+                startMonth = "${m+1}"
                 startDate = "${d}"
-                binding.startDate.setText("${y}년 ${m}월 ${d}일")
+                binding.startDate.setText("${y}년 ${m+1}월 ${d}일")
                 binding.startDate.setTextColor(Color.parseColor("#855EFF"))
-                startDay = "${startYear}-${startMonth}-${startDate}"
+                if (m<10) {
+                    startMonth = "0${m+1}"
+                }
+                if (d<10) {
+                    startDate = "0${d}"
+                }
+                startDay = "${startYear}${startMonth}${startDate}"
+                Log.d("endday",startDay)
             }
 
         }
 
-        binding.endDate.setOnClickListener{
+        binding.endDate.setOnClickListener {
 //            binding.calendarView.visibility=View.VISIBLE
 
-            binding.calendarView.setOnDateChangeListener{
-                    calendarView, y, m, d ->
+            binding.calendarView.setOnDateChangeListener { calendarView, y, m, d ->
                 endYear = "${y}"
-                endMonth = "${m}"
+                endMonth = "${m+1}"
                 endDate = "${d}"
-                binding.endDate.setText("${y}년 ${m}월 ${d}일")
+                binding.endDate.setText("${y}년 ${m+1}월 ${d}일")
                 binding.endDate.setTextColor(Color.parseColor("#855EFF"))
-                endDay = "${endYear}-${endMonth}-${endDate}"
+                if (m<10) {
+                    endMonth = "0${m+1}"
+                }
+                if (d<10) {
+                    endDate = "0${d}"
+                }
+                endDay = "${endYear}${endMonth}${endDate}"
+                Log.d("endday",endDay)
             }
         }
 
@@ -109,14 +122,16 @@ class ChooseDateFragment : Fragment() {
 
 
         binding.btnNext.setOnClickListener {
-            if(startDay==""||endDay=="") {
-                Toast.makeText(context, "날짜를 선택해주세요",Toast.LENGTH_SHORT).show()
-            } else{
-                MyApplication.prefs.setString("startDay",startDay)
+            if (startDay == "" || endDay == "") {
+                Toast.makeText(context, "날짜를 선택해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+
+
+               MyApplication.prefs.setString("startDay",startDay)
                 MyApplication.prefs.setString("endDay",endDay)
                 val hActivity = activity as HomeActivity
                 hActivity.step1Step2()
-            }
+            } // 얍
 
 
         }
@@ -127,21 +142,7 @@ class ChooseDateFragment : Fragment() {
         }
 
 
-
-//        binding.btnNext.setOnClickListener {
-//            val hActivity = activity as HomeActivity
-//            hActivity.step1Step2()
-//        }
     }
 
 
-
-
-
-
-
-
-
-
-
-}
+} // 커밋용

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraint_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,13 +11,14 @@
     tools:context=".view.HomeFragment">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="34.76dp"
-        android:layout_height="26dp">
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3">
 
         <TextView
             android:id="@+id/carrier_who"
@@ -32,9 +33,10 @@
 
         <ImageButton
             android:id="@+id/btn_mypage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="#ffffff"
+            android:layout_marginRight="15dp"
             android:src="@drawable/ic_mypage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,45 +44,50 @@
 
         <ImageButton
             android:id="@+id/btn_alarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="#ffffff"
+            android:paddingRight="5dp"
             android:src="@drawable/ic_alarm"
-            android:layout_marginRight="9.62dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_mypage"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/carrier_rv"
-            android:layout_marginTop="32dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_add_carrier"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_margin="24dp"
-            android:src="@drawable/add"
-            app:tint="@null"
-           app:maxImageSize="70dp"
-            app:layout_constraintBottom_toBottomOf="@+id/carrier_rv"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_carrier"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="50dp"
+        android:src="@drawable/add"
+        app:elevation="1dp"
+        android:layout_marginTop="550dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+        app:maxImageSize="65dp"
+        app:tint="@null" />
 
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 

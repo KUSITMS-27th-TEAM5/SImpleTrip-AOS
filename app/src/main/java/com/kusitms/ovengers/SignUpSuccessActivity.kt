@@ -5,24 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class SignUpSuccessActivity : AppCompatActivity() {
+class SignUpSuccessActivity : AppCompatActivity() {// 커밋용
 
-    val finishButton :Button = findViewById(R.id.btn_signup_success)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_success)
 
+        val finishButton = findViewById<Button>(R.id.btn_signup_success)
+
 
         finishButton.setOnClickListener {
-
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, BoardingActivity_1::class.java)
             finish()
             startActivity(intent)
         }
     }
-
-
-
-
 
 }

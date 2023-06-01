@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/carrierInfo"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".CarrierInfoActivity"
     android:orientation="vertical">
+    <!-- 커밋용 -->
 
     <ImageButton
         android:id="@+id/btn_back"
@@ -26,7 +28,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/pretendard_bold"
-        android:text="지니 님의 일본 여행 캐리어"
+        android:text="쨍 님의 일본 여행 캐리어"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,8 +62,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/fabphoto"
-        app:maxImageSize="60dp"
+        app:maxImageSize="65dp"
         app:tint="@null"
+        app:elevation="1dp"
         app:layout_constraintTop_toTopOf="@id/fabMain"
         app:layout_constraintBottom_toBottomOf="@id/fabMain"
         app:layout_constraintStart_toStartOf="@id/fabMain"
@@ -72,8 +75,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/fabfile"
-        app:maxImageSize="60dp"
+        app:maxImageSize="65dp"
         app:tint="@null"
+        app:elevation="1dp"
         app:layout_constraintTop_toTopOf="@id/fabMain"
         app:layout_constraintBottom_toBottomOf="@id/fabMain"
         app:layout_constraintStart_toStartOf="@id/fabMain"
@@ -85,8 +89,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/fablink"
-        app:maxImageSize="60dp"
+        app:maxImageSize="65dp"
         app:tint="@null"
+        app:elevation="1dp"
         app:layout_constraintTop_toTopOf="@id/fabMain"
         app:layout_constraintBottom_toBottomOf="@id/fabMain"
         app:layout_constraintStart_toStartOf="@id/fabMain"
@@ -100,8 +105,9 @@
         android:layout_marginEnd="244dp"
         android:layout_marginBottom="160dp"
         android:src="@drawable/fabmain"
-        app:maxImageSize="60dp"
+        app:maxImageSize="70dp"
         app:tint="@null"
+        app:elevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

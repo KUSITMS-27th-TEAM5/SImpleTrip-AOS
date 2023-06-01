@@ -3,7 +3,7 @@ package com.kusitms.ovengers
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferenceUtil(context: Context)
+class PreferenceUtil(context: Context)// 커밋용
 {
     private val prefs: SharedPreferences = context.getSharedPreferences("SharedPreferences", 0)
 

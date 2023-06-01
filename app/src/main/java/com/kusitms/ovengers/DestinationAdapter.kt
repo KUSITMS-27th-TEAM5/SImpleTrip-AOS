@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kusitms.ovengers.data.Destination
 
 class DestinationAdapter(private val dataSet : ArrayList<Destination>) : RecyclerView.Adapter<DestinationAdapter.ViewHolder>(){
-    class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {// 커밋용
         var destination : TextView
         var img : ImageView
 
@@ -47,4 +47,4 @@ class DestinationAdapter(private val dataSet : ArrayList<Destination>) : Recycle
         }
     }
 
-}
+} // 커밋용

@@ -12,6 +12,7 @@ import com.kusitms.ovengers.retrofit.APIS
 import com.kusitms.ovengers.retrofit.RetrofitInstance
 
 class StoreFinishFragment : Fragment() {
+    // 커밋용
 
     private lateinit var retAPIS: APIS
     lateinit var binding: FragmentStoreFinishBinding
@@ -41,4 +42,4 @@ class StoreFinishFragment : Fragment() {
 
         return binding.root
     }
-}
+} // 커밋용
